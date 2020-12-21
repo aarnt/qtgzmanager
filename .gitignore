@@ -1,0 +1,15 @@
+*.user
+.qmake.stash
+Makefile
+bin/**
+build/**
+qtgzmanager.pro.user
+qrc_resources.cpp
+sudo/*.qm
+sudo/*.o
+sudo/Makefile
+sudo/qtgzmanager-sudo
+sudo/moc*.*
+sudo/octopi-sudo
+sudo/qrc*.cpp
+sudo/ui_pass*.h
