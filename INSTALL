@@ -8,16 +8,23 @@ There are two ways to install QTGZManager:
 
 I - Manually compiling the sources:
 
-	a) qmake qtgzmanager.pro
-	b) make
+	$ cd sudo
+        $ qmake-qt5 qtgzmanager-sudo.pro
+	$ make
+	# make install
+	$ cd ..
+	$ qmake-qt5 qtgzmanager.pro
+	$ make
+	# make install
 
-The binary will be in ./bin/qtgzmanager.
+
+The binary will be called "qtgzmanager".
 
 
 II - Executing pack_qtgzmanager.sh script to get the latest dev version:
 
-	a) cd tools
-	b) sh pack_qtgzmanager.sh (needs internet access and root privilege)
+	$ cd tools
+	# sh pack_qtgzmanager.sh
 
 The package will be generated in /tmp. Just installpkg it and you are ready.
 

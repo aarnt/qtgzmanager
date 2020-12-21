@@ -11,10 +11,10 @@
 #######################################################################
 
 PRGNAM=qtgzmanager
-VERSION=${VERSION:-1.0.3}
+VERSION=${VERSION:-1.1.1}
 
-svn export \
-svn://svn.code.sf.net/p/jtgzmanager/code/ \
+git clone \
+https://github.com/aarnt/qtgzmanager.git \
 $PRGNAM-$VERSION
 
 # Copies slack-desc to the current dir
