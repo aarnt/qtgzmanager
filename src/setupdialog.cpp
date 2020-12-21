@@ -138,8 +138,6 @@ void SetupDialog::initComboPrivilege(){
     cbPrivilege->setCurrentIndex(index);
   else
     cbPrivilege->setCurrentIndex(0);*/
-
-  cbPrivilege->setEnabled(false);
 }
 
 void SetupDialog::initGroupBox(){
@@ -303,7 +301,7 @@ void SetupDialog::restoreDefaults(QAbstractButton* button){
       cbStartHidden->setChecked(false);
       cbHighlightItems->setChecked(true);
       sbHighlightItems->setValue(100);
-      cbPrivilege->setCurrentIndex(0);
+      //cbPrivilege->setCurrentIndex(0);
       sliderFont->setValue(0);
 
       rbPkgTools->setChecked(true);
@@ -387,12 +385,12 @@ void SetupDialog::accept(){
   if (SettingsManager::getUseSilentActionOutput() != cbUseSilentOuput->isChecked())
     SettingsManager::setUseSilentActionOutput(cbUseSilentOuput->isChecked());
 
-  if (SettingsManager::getPrivilegeEscalationTool() != cbPrivilege->currentText()){
+  /*if (SettingsManager::getPrivilegeEscalationTool() != cbPrivilege->currentText()){
     if (cbPrivilege->currentIndex() != 0)
       SettingsManager::setPrivilegeEscalationTool(cbPrivilege->currentText());
     else
       SettingsManager::setPrivilegeEscalationTool(ctn_AUTOMATIC);
-  }
+  }*/
 
   if (needsAppRestart){
     QMessageBox::information(this, StrConstants::getAttention(), StrConstants::getWarnNeedsAppRestart());
