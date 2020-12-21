@@ -466,12 +466,13 @@ QString MainWindowImpl::_removeStringBugs(const QString str){
   QString newStr(str);
 
   //Removing the annoying kdesu 4.x "error" messages
-  newStr.remove(QRegExp("^kdesu\\(.*$"));
-  newStr.remove(QRegExp("^kbuildsycoca.*$"));
-  newStr.remove(QRegExp("^Connecting to deprecated signal.*$"));
-  newStr.remove(QRegExp("^QDBusConnection.*$"));
-  newStr.remove(QRegExp("kdeinit4.*$"));
-  newStr.remove(QRegExp("glibtop\\(c=.*$"));
+  newStr.remove(QRegularExpression("qt.qpa.xcb+"));
+  newStr.remove(QRegularExpression("^kdesu\\(.*$"));
+  newStr.remove(QRegularExpression("^kbuildsycoca.*$"));
+  newStr.remove(QRegularExpression("^Connecting to deprecated signal.*$"));
+  newStr.remove(QRegularExpression("^QDBusConnection.*$"));
+  newStr.remove(QRegularExpression("kdeinit4.*$"));
+  newStr.remove(QRegularExpression("glibtop\\(c=.*$"));
 
   //Removing Style error messages
   newStr.remove("QGtkstyle was unable to detect the current gtk+ theme.",
