@@ -181,7 +181,10 @@ void CurlThread::run(){
   connect(pingTimer, SIGNAL(timeout()), this, SLOT(onPingTimer()), Qt::DirectConnection);
   pingTimer->start(ctn_PING_TIMER_INTERVAL);
 
-  m_curlProcess->start("/bin/sh -c " + tempFile->fileName());
+  QStringList params;
+  params << "-c";
+  params << tempFile->fileName();
+  m_curlProcess->start("/bin/sh", params);
   m_curlProcess->waitForStarted(-1);
 
   exec();

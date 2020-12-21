@@ -65,7 +65,7 @@ void SearchLineEdit::updateSearchButton(const QString &text)
 
 QString SearchLineEdit::styleSheetForCurrentState() const
 {
-  int frameWidth = 1; //this->style()->pixelMetric(QStyle::PM_DefaultFrameWidth);
+  //int frameWidth = 1; //this->style()->pixelMetric(QStyle::PM_DefaultFrameWidth);
   QString style;
   style += "QLineEdit {";
 
