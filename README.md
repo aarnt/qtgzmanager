@@ -1,4 +1,4 @@
-## This is QTGZManager, a powerful pkgtools front end using Qt libs.
+## This is QTGZManager, a powerful pkgtool front end using Qt libs.
 
 ![Main window](https://raw.githubusercontent.com/aarnt/qtgzmanager/master/mainwindow.png)
 
