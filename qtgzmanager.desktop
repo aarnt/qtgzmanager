@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=QTGZManager
+GenericName=A Slackware Package Manager
+Comment=A Slackware TGZ management app
+Icon=/usr/share/pixmaps/QTGZ.png
+TryExec=qtgzmanager
+Exec=qtgzmanager -graphicssystem raster
+Terminal=false
+Categories=Qt;Application;System

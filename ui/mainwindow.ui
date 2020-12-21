@@ -1,0 +1,873 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>727</width>
+    <height>557</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QSplitter" name="splitterHorizontal">
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>1</number>
+      </property>
+      <property name="midLineWidth">
+       <number>0</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="opaqueResize">
+       <bool>true</bool>
+      </property>
+      <property name="handleWidth">
+       <number>4</number>
+      </property>
+      <widget class="QSplitter" name="splitterVertical">
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="opaqueResize">
+        <bool>true</bool>
+       </property>
+       <widget class="QFrame" name="frame">
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Sunken</enum>
+        </property>
+        <property name="lineWidth">
+         <number>1</number>
+        </property>
+        <layout class="QGridLayout">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QDockWidget" name="dockDirectories">
+           <property name="font">
+            <font>
+             <family>Sans Serif</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="accessibleName">
+            <string/>
+           </property>
+           <property name="accessibleDescription">
+            <string/>
+           </property>
+           <property name="features">
+            <set>QDockWidget::NoDockWidgetFeatures</set>
+           </property>
+           <property name="allowedAreas">
+            <set>Qt::NoDockWidgetArea</set>
+           </property>
+           <property name="windowTitle">
+            <string>Directories</string>
+           </property>
+           <widget class="QWidget" name="dockWidgetContents">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <layout class="QGridLayout">
+             <property name="leftMargin">
+              <number>1</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <property name="spacing">
+              <number>6</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QTreeView" name="tvDir">
+               <property name="focusPolicy">
+                <enum>Qt::ClickFocus</enum>
+               </property>
+               <property name="contextMenuPolicy">
+                <enum>Qt::CustomContextMenu</enum>
+               </property>
+               <property name="acceptDrops">
+                <bool>true</bool>
+               </property>
+               <property name="indentation">
+                <number>20</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QFrame" name="frame_2">
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Sunken</enum>
+        </property>
+        <property name="lineWidth">
+         <number>1</number>
+        </property>
+        <property name="midLineWidth">
+         <number>0</number>
+        </property>
+        <layout class="QGridLayout">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QDockWidget" name="dockPackages">
+           <property name="font">
+            <font>
+             <family>Sans Serif</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="features">
+            <set>QDockWidget::NoDockWidgetFeatures</set>
+           </property>
+           <property name="allowedAreas">
+            <set>Qt::NoDockWidgetArea</set>
+           </property>
+           <property name="windowTitle">
+            <string>Packages in Directory</string>
+           </property>
+           <widget class="QWidget" name="dockWidgetContents_2">
+            <layout class="QGridLayout">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <property name="spacing">
+              <number>6</number>
+             </property>
+             <item row="0" column="0">
+              <layout class="QHBoxLayout">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="SearchLineEdit" name="leFilterPackage"/>
+               </item>
+              </layout>
+             </item>
+             <item row="1" column="0">
+              <widget class="QTreeView" name="tvPackage">
+               <property name="contextMenuPolicy">
+                <enum>Qt::CustomContextMenu</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QFrame" name="frame_3">
+        <property name="frameShape">
+         <enum>QFrame::Panel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <property name="lineWidth">
+         <number>0</number>
+        </property>
+        <layout class="QGridLayout">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QDockWidget" name="dockInstalledPackages">
+           <property name="font">
+            <font>
+             <family>Sans Serif</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="features">
+            <set>QDockWidget::NoDockWidgetFeatures</set>
+           </property>
+           <property name="allowedAreas">
+            <set>Qt::NoDockWidgetArea</set>
+           </property>
+           <property name="windowTitle">
+            <string>Installed Packages</string>
+           </property>
+           <widget class="QWidget" name="dockWidgetContents_3">
+            <layout class="QGridLayout">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>1</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <property name="spacing">
+              <number>6</number>
+             </property>
+             <item row="0" column="0">
+              <layout class="QHBoxLayout">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="SearchLineEdit" name="leFilterInstalledPackages"/>
+               </item>
+              </layout>
+             </item>
+             <item row="1" column="0">
+              <widget class="QTreeView" name="tvInstalledPackages">
+               <property name="contextMenuPolicy">
+                <enum>Qt::CustomContextMenu</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="TabWidget" name="twTODO">
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
+       <property name="tabPosition">
+        <enum>QTabWidget::South</enum>
+       </property>
+       <property name="tabShape">
+        <enum>QTabWidget::Rounded</enum>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <property name="elideMode">
+        <enum>Qt::ElideNone</enum>
+       </property>
+       <property name="usesScrollButtons">
+        <bool>true</bool>
+       </property>
+       <property name="tabsClosable">
+        <bool>false</bool>
+       </property>
+       <widget class="QWidget" name="tabActions">
+        <attribute name="title">
+         <string>Actions</string>
+        </attribute>
+        <layout class="QGridLayout">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QTreeView" name="tvTODO">
+           <property name="contextMenuPolicy">
+            <enum>Qt::CustomContextMenu</enum>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Plain</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tabOutput">
+        <attribute name="title">
+         <string>Output</string>
+        </attribute>
+        <layout class="QGridLayout">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QTextBrowser" name="textEdit">
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Plain</enum>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="openExternalLinks">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>727</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="contextMenuPolicy">
+    <enum>Qt::NoContextMenu</enum>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuOptions">
+    <property name="title">
+     <string>Options</string>
+    </property>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuView"/>
+   <addaction name="menuOptions"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="mouseTracking">
+    <bool>false</bool>
+   </property>
+   <property name="contextMenuPolicy">
+    <enum>Qt::CustomContextMenu</enum>
+   </property>
+   <property name="acceptDrops">
+    <bool>false</bool>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::TopToolBarArea</set>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonIconOnly</enum>
+   </property>
+   <property name="floatable">
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../opt/kde/share/icons/kdeclassic/22x22/actions/exit.png</normaloff>../../../../../../opt/kde/share/icons/kdeclassic/22x22/actions/exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionInstall_package">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../opt/kde/share/icons/kdeclassic/22x22/actions/1rightarrow.png</normaloff>../../../../../../opt/kde/share/icons/kdeclassic/22x22/actions/1rightarrow.png</iconset>
+   </property>
+   <property name="text">
+    <string>Install package</string>
+   </property>
+  </action>
+  <action name="actionUpgrade_package">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../opt/kde/share/icons/kdeclassic/22x22/actions/2rightarrow.png</normaloff>../../../../../../opt/kde/share/icons/kdeclassic/22x22/actions/2rightarrow.png</iconset>
+   </property>
+   <property name="text">
+    <string>Upgrade package</string>
+   </property>
+  </action>
+  <action name="actionDowngrade_package">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../opt/kde/share/icons/kdeclassic/22x22/actions/2leftarrow.png</normaloff>../../../../../../opt/kde/share/icons/kdeclassic/22x22/actions/2leftarrow.png</iconset>
+   </property>
+   <property name="text">
+    <string>Downgrade package</string>
+   </property>
+  </action>
+  <action name="actionRemove_package">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../opt/kde/share/icons/kdeclassic/22x22/actions/kdeprint_stopprinter.png</normaloff>../../../../../../opt/kde/share/icons/kdeclassic/22x22/actions/kdeprint_stopprinter.png</iconset>
+   </property>
+   <property name="text">
+    <string>Remove package</string>
+   </property>
+  </action>
+  <action name="actionDelete_file">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../opt/kde/share/icons/kdeclassic/22x22/actions/tool_delete.png</normaloff>../../../../../../opt/kde/share/icons/kdeclassic/22x22/actions/tool_delete.png</iconset>
+   </property>
+   <property name="text">
+    <string>Delete file</string>
+   </property>
+  </action>
+  <action name="actionCreate_Directory">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../opt/kde/share/icons/default.kde/22x22/actions/folder_new.png</normaloff>../../../../../../opt/kde/share/icons/default.kde/22x22/actions/folder_new.png</iconset>
+   </property>
+   <property name="text">
+    <string>Create directory</string>
+   </property>
+  </action>
+  <action name="actionRemove_Directory">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../../../../opt/kde/share/icons/default.kde/22x22/actions/edittrash.png</normaloff>../../../../../../opt/kde/share/icons/default.kde/22x22/actions/edittrash.png</iconset>
+   </property>
+   <property name="text">
+    <string>Remove directory</string>
+   </property>
+  </action>
+  <action name="actionDelete_ActionFile">
+   <property name="icon">
+    <iconset>
+     <normaloff>../resources/tool_delete.png</normaloff>../resources/tool_delete.png</iconset>
+   </property>
+   <property name="text">
+    <string>Remove file from Action</string>
+   </property>
+  </action>
+  <action name="actionDelete_All_ActionFiles">
+   <property name="icon">
+    <iconset>
+     <normaloff>../resources/tool_delete.png</normaloff>../resources/tool_delete.png</iconset>
+   </property>
+   <property name="text">
+    <string>Remove all files from Action</string>
+   </property>
+  </action>
+  <action name="actionAbout_QTGZManager">
+   <property name="icon">
+    <iconset>
+     <normaloff>../resources/JTGZManager.png</normaloff>../resources/JTGZManager.png</iconset>
+   </property>
+   <property name="text">
+    <string>About QTGZManager...</string>
+   </property>
+  </action>
+  <action name="actionReinstall_package">
+   <property name="icon">
+    <iconset>
+     <normaloff>../resources/reload2.png</normaloff>../resources/reload2.png</iconset>
+   </property>
+   <property name="text">
+    <string>Reinstall package</string>
+   </property>
+  </action>
+  <action name="actionPackageContent">
+   <property name="text">
+    <string>View content</string>
+   </property>
+  </action>
+  <action name="actionPackageInfo">
+   <property name="text">
+    <string>View information</string>
+   </property>
+  </action>
+  <action name="actionInstalledPackageInfo">
+   <property name="text">
+    <string>View information</string>
+   </property>
+  </action>
+  <action name="actionExecuteActions">
+   <property name="text">
+    <string>Execute Actions</string>
+   </property>
+  </action>
+  <action name="actionExpand_All_Items">
+   <property name="text">
+    <string>Expand all items</string>
+   </property>
+  </action>
+  <action name="actionCollapse_All_Items">
+   <property name="text">
+    <string>Collapse all items</string>
+   </property>
+  </action>
+  <action name="actionHideRightView">
+   <property name="text">
+    <string>Hide right view</string>
+   </property>
+  </action>
+  <action name="actionMaximizeLowerView">
+   <property name="text">
+    <string>Maximize lower view</string>
+   </property>
+  </action>
+  <action name="actionRefreshPackageLists">
+   <property name="text">
+    <string>Refresh package lists</string>
+   </property>
+  </action>
+  <action name="actionCloseTab">
+   <property name="text">
+    <string>Close tab</string>
+   </property>
+  </action>
+  <action name="actionCloseAllTabs">
+   <property name="text">
+    <string>Close all tabs</string>
+   </property>
+  </action>
+  <action name="actionDiffToInstalled">
+   <property name="text">
+    <string>Diff to installed</string>
+   </property>
+   <property name="iconText">
+    <string>Diff to installed</string>
+   </property>
+   <property name="toolTip">
+    <string>Diff to installed</string>
+   </property>
+  </action>
+  <action name="actionOpenDirectory">
+   <property name="text">
+    <string>Open this directory</string>
+   </property>
+  </action>
+  <action name="actionOpenFile">
+   <property name="text">
+    <string>Open this file</string>
+   </property>
+  </action>
+  <action name="actionFindFile">
+   <property name="text">
+    <string>Find a file</string>
+   </property>
+  </action>
+  <action name="actionMinimizeLowerView">
+   <property name="text">
+    <string>Minimize lower view</string>
+   </property>
+  </action>
+  <action name="actionNormalView">
+   <property name="text">
+    <string>Normal view</string>
+   </property>
+  </action>
+  <action name="actionSnapshotInstalledPackages">
+   <property name="text">
+    <string>Take a snapshot of Installed Packages</string>
+   </property>
+  </action>
+  <action name="actionExpandItem">
+   <property name="text">
+    <string>ExpandItem</string>
+   </property>
+  </action>
+  <action name="actionCollapseItem">
+   <property name="text">
+    <string>CollapseItem</string>
+   </property>
+  </action>
+  <action name="actionDiffToEachOther">
+   <property name="text">
+    <string>diffToEachOther</string>
+   </property>
+  </action>
+  <action name="actionEditFile">
+   <property name="text">
+    <string>EditFile</string>
+   </property>
+  </action>
+  <action name="actionOpenTerminal">
+   <property name="text">
+    <string>OpenTerminal</string>
+   </property>
+  </action>
+  <action name="actionFreezePkg">
+   <property name="text">
+    <string>FreezePkg</string>
+   </property>
+  </action>
+  <action name="actionUnfreezePkg">
+   <property name="text">
+    <string>UnfreezePkg</string>
+   </property>
+  </action>
+  <action name="actionTransformRPMinTGZ">
+   <property name="text">
+    <string>TransformRPMinTGZ</string>
+   </property>
+  </action>
+  <action name="actionChangeDefaultDirectory">
+   <property name="text">
+    <string>ChangeDefaultDirectory</string>
+   </property>
+  </action>
+  <action name="actionFindFileInPkgFileList">
+   <property name="text">
+    <string>FindFileInPkgFileList</string>
+   </property>
+  </action>
+  <action name="actionFindFileInPackage">
+   <property name="text">
+    <string>FindFileInPackage</string>
+   </property>
+  </action>
+  <action name="actionFindPackage">
+   <property name="text">
+    <string>FindPackage</string>
+   </property>
+  </action>
+  <action name="actionSetup">
+   <property name="text">
+    <string>Setup</string>
+   </property>
+  </action>
+  <action name="actionOpenSnapshot">
+   <property name="text">
+    <string>openSnapshot</string>
+   </property>
+  </action>
+  <action name="actionDelete_SelectedActionFiles">
+   <property name="text">
+    <string>delete_SelectedActionFiles</string>
+   </property>
+  </action>
+  <action name="actionUpdater">
+   <property name="text">
+    <string>Check for Slackware patches...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="actionCloseClickedTab">
+   <property name="text">
+    <string>Close tab</string>
+   </property>
+  </action>
+  <action name="actionOpenThisSnapshot">
+   <property name="text">
+    <string>openSnapshot</string>
+   </property>
+  </action>
+  <action name="actionCutPackage">
+   <property name="icon">
+    <iconset resource="../resources.qrc">
+     <normaloff>:/resources/images/edit-cut.png</normaloff>:/resources/images/edit-cut.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cut</string>
+   </property>
+  </action>
+  <action name="actionCopyPackage">
+   <property name="icon">
+    <iconset resource="../resources.qrc">
+     <normaloff>:/resources/images/edit-copy.png</normaloff>:/resources/images/edit-copy.png</iconset>
+   </property>
+   <property name="text">
+    <string>Copy</string>
+   </property>
+  </action>
+  <action name="actionPastePackage">
+   <property name="icon">
+    <iconset resource="../resources.qrc">
+     <normaloff>:/resources/images/edit-paste.png</normaloff>:/resources/images/edit-paste.png</iconset>
+   </property>
+   <property name="text">
+    <string>Paste</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TabWidget</class>
+   <extends>QTabWidget</extends>
+   <header>tabwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SearchLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>searchlineedit.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>tvDir</tabstop>
+  <tabstop>tvPackage</tabstop>
+  <tabstop>leFilterInstalledPackages</tabstop>
+  <tabstop>tvInstalledPackages</tabstop>
+  <tabstop>twTODO</tabstop>
+  <tabstop>textEdit</tabstop>
+  <tabstop>tvTODO</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,21 @@
+#===============================================================#
+#								#
+# 	This is the user defined Slackware mirror list		#
+#								#
+#===============================================================#
+#								#
+# Syntax:							#
+#								#
+# <Country>, <ftp or http url containing Slackware versions>	#
+#								#
+# Ex:								#
+# 								#
+# USA (official), http://mirrors.slackware.com/slackware/	#
+# (The trailing slash at the end of URL is important!)		#
+#								#
+#								#
+# * For SlackwareARM mirrors, put "(ARM)" after the country:	#
+# Fake (ARM), ftp://slackwarearm-mirror.com/slackwarearm/ 	#
+#								#
+#===============================================================#
+

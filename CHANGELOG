@@ -1,0 +1,4 @@
+1.1.0 (dev)
+  Ported code to Qt5 libs.
+  Migration from SF/SVN to Github's Git.
+
