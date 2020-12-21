@@ -79,6 +79,7 @@ class MainWindowImpl : public QMainWindow, public Ui::MainWindow
     bool m_reallyWannaClose;
     bool m_ignoreCancelledActions;
 
+    QString m_initialDir;
     QString m_defaultDirectory;
     QString m_updaterDirectory;
     PackagesClipBoard m_packagesClipboard;

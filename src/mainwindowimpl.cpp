@@ -177,6 +177,10 @@ void MainWindowImpl::show(){
     }
     else QMainWindow::show();
   }
+
+  QModelIndex index = m_modelDir->index(m_initialDir);
+  tvDir->scrollTo(index, QAbstractItemView::PositionAtCenter);
+  tvDir->setCurrentIndex(index);
 }
 
 void MainWindowImpl::changeDir(){
@@ -1723,10 +1727,11 @@ void MainWindowImpl::reapplyPackageFilter(){
     showPackagesInDirectory();
 	}
 
-	if (numPkgs > 1)
-		dockPackages->setWindowTitle(tr("%1 Packages in Directory").arg(QString::number(numPkgs)));
-	else if (numPkgs == 1)
-		dockPackages->setWindowTitle(tr("1 Package in Directory"));
+  if (numPkgs >= 1)
+    dockPackages->setWindowTitle(tr("%1 (%2) Packages in Directory").arg(QString::number(numPkgs)).
+        arg(QString::number(tvPackage->selectionModel()->selectedRows().count())));
+  /*else if (numPkgs == 1)
+    dockPackages->setWindowTitle(tr("1 Package in Directory"));*/
 	else
 		dockPackages->setWindowTitle(tr("0 Packages in Directory"));
 
@@ -1749,6 +1754,12 @@ void MainWindowImpl::reapplyInstalledPackagesFilter(){
     delete m_modelInstalledPackages;
     delete m_proxyModelInstalledPackages;
     initializeInstalledPackagesTreeView();
+
+    disconnect(tvInstalledPackages->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+            this, SLOT(tvInstalledPackagesSelectionChanged(QItemSelection,QItemSelection)));
+
+    connect(tvInstalledPackages->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+            this, SLOT(tvInstalledPackagesSelectionChanged(QItemSelection,QItemSelection)));
   }
 
   QRegExp regExp(search, Qt::CaseInsensitive, QRegExp::RegExp);
@@ -1763,10 +1774,11 @@ void MainWindowImpl::reapplyInstalledPackagesFilter(){
     leFilterInstalledPackages->initStyleSheet();
 	}
 
-	if (numInstPkgs > 1)
-    dockInstalledPackages->setWindowTitle(tr("%1 Packages Installed").arg(QString::number(numInstPkgs)));
-	else if (numInstPkgs == 1)
-    dockInstalledPackages->setWindowTitle(tr("1 Package Installed"));
+  if (numInstPkgs >= 1)
+    dockInstalledPackages->setWindowTitle(tr("%1 (%2) Packages Installed").arg(QString::number(numInstPkgs)).
+        arg(QString::number(tvInstalledPackages->selectionModel()->selectedRows().count())));
+  /*else if (numInstPkgs == 1)
+    dockInstalledPackages->setWindowTitle(tr("1 Package Installed"));*/
 	else
 		dockInstalledPackages->setWindowTitle(tr("No Installed Package found!"));
 

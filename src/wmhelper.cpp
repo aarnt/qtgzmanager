@@ -56,8 +56,8 @@ bool WMHelper::isTDERunning()
   //slParam << ctn_TDE_DESKTOP;
 
   proc.start(QStringLiteral("ps"), slParam);
-  proc.waitForStarted();
-  proc.waitForFinished();
+  proc.waitForStarted(-1);
+  proc.waitForFinished(-1);
 
   QString out = QString::fromUtf8(proc.readAll());
   proc.close();
@@ -79,8 +79,8 @@ bool WMHelper::isGNOMERunning()
   //slParam << ctn_GNOME_DESKTOP;
 
   proc.start(QStringLiteral("ps"), slParam);
-  proc.waitForStarted();
-  proc.waitForFinished();
+  proc.waitForStarted(-1);
+  proc.waitForFinished(-1);
   QString out = QString::fromUtf8(proc.readAll());
   proc.close();
 
@@ -101,8 +101,8 @@ bool WMHelper::isXFCERunning()
   //slParam << ctn_XFCE_DESKTOP;
 
   proc.start(QStringLiteral("ps"), slParam);
-  proc.waitForStarted();
-  proc.waitForFinished();
+  proc.waitForStarted(-1);
+  proc.waitForFinished(-1);
   QString out = QString::fromUtf8(proc.readAll());
   proc.close();
 
@@ -123,8 +123,8 @@ bool WMHelper::isLXDERunning()
   //slParam << ctn_LXDE_DESKTOP;
 
   proc.start(QStringLiteral("ps"), slParam);
-  proc.waitForStarted();
-  proc.waitForFinished();
+  proc.waitForStarted(-1);
+  proc.waitForFinished(-1);
   QString out = QString::fromUtf8(proc.readAll());
   proc.close();
 
@@ -153,8 +153,8 @@ bool WMHelper::isOPENBOXRunning()
   //slParam << ctn_OPENBOX_DESKTOP;
 
   proc.start(QStringLiteral("ps"), slParam);
-  proc.waitForStarted();
-  proc.waitForFinished();
+  proc.waitForStarted(-1);
+  proc.waitForFinished(-1);
   QString out = QString::fromUtf8(proc.readAll());
   proc.close();
 
@@ -175,8 +175,8 @@ bool WMHelper::isMATERunning()
   //slParam << ctn_MATE_DESKTOP;
 
   proc.start(QStringLiteral("ps"), slParam);
-  proc.waitForStarted();
-  proc.waitForFinished();
+  proc.waitForStarted(-1);
+  proc.waitForFinished(-1);
   QString out = QString::fromUtf8(proc.readAll());
   proc.close();
 
@@ -197,8 +197,8 @@ bool WMHelper::isCinnamonRunning()
   //slParam << ctn_CINNAMON_DESKTOP;
 
   proc.start(QStringLiteral("ps"), slParam);
-  proc.waitForStarted();
-  proc.waitForFinished();
+  proc.waitForStarted(-1);
+  proc.waitForFinished(-1);
   QString out = QString::fromUtf8(proc.readAll());
   proc.close();
 
@@ -219,8 +219,8 @@ bool WMHelper::isLuminaRunning()
   //slParam << ctn_LUMINA_DESKTOP;
 
   proc.start(QStringLiteral("ps"), slParam);
-  proc.waitForStarted();
-  proc.waitForFinished();
+  proc.waitForStarted(-1);
+  proc.waitForFinished(-1);
   QString out = QString::fromUtf8(proc.readAll());
   proc.close();
 
@@ -661,98 +661,7 @@ void WMHelper::openTerminal( const QString& dirName )
   }
 }
 
-/*bool WMHelper::isKDERunning(){
-  QStringList slParam;
-  QProcess proc;
-  slParam << "-aux";
-  //slParam << ctn_KDE_DESKTOP;
-
-  proc.start("ps", slParam);
-  proc.waitForStarted();
-  proc.waitForFinished();
-
-  QString out = proc.readAll();
-  proc.close();
-
-  if (out.count(ctn_KDE_DESKTOP)>0)
-    return true;
-  else
-    return false;
-}
-
-bool WMHelper::isTDERunning(){
-  QStringList slParam;
-  QProcess proc;
-  slParam << "-aux";
-  //slParam << ctn_TDE_DESKTOP;
-
-  proc.start("ps", slParam);
-  proc.waitForStarted();
-  proc.waitForFinished();
-
-  QString out = proc.readAll();
-  proc.close();
-
-  if (out.count(ctn_TDE_DESKTOP)>0)
-    return true;
-  else
-    return false;
-}
-
-bool WMHelper::isXFCERunning(){
-  QStringList slParam;
-  QProcess proc;
-  slParam << "-aux";
-  //slParam << ctn_XFCE_DESKTOP;
-
-  proc.start("ps", slParam);
-  proc.waitForStarted();
-  proc.waitForFinished();
-  QString out = proc.readAll();
-  proc.close();
-
-  if (out.count(ctn_XFCE_DESKTOP)>0)
-    return true;
-  else
-    return false;
-}
-
-bool WMHelper::isLXDERunning(){
-  QStringList slParam;
-  QProcess proc;
-  slParam << "-aux";
-  //slParam << ctn_LXDE_DESKTOP;
-
-  proc.start("ps", slParam);
-  proc.waitForStarted();
-  proc.waitForFinished();
-  QString out = proc.readAll();
-  proc.close();
-
-  if (out.count(ctn_LXDE_DESKTOP)>0)
-    return true;
-  else
-      return false;
-}
-
-bool WMHelper::isMATERunning(){
-  QStringList slParam;
-  QProcess proc;
-  slParam << "-aux";
-  //slParam << ctn_MATE_DESKTOP;
-
-  proc.start("ps", slParam);
-  proc.waitForStarted();
-  proc.waitForFinished();
-  QString out = proc.readAll();
-  proc.close();
-
-  if (out.count(ctn_MATE_DESKTOP)>0)
-    return true;
-  else
-    return false;
-}
-
+/*
 void WMHelper::editFile( const QString& fileName ){
   QProcess *process = new QProcess(qApp->activeWindow());
   QStringList s;
@@ -794,94 +703,6 @@ void WMHelper::editFile( const QString& fileName ){
 
     process->startDetached("/bin/sh", s);
   }
-}
-
-QString WMHelper::getXFCEEditor(){
-  if (UnixCommand::hasTheExecutable(ctn_XFCE_EDITOR))
-    return ctn_XFCE_EDITOR;
-  else
-    return ctn_XFCE_EDITOR_ALT;
-}
-
-QString WMHelper::getKDESUCommand(){
-  QString result = ctn_KDESU;
-  result += " -d ";
-  result += " -t ";
-  result += " --noignorebutton ";
-
-  return result;
-}
-
-QString WMHelper::getTDESUCommand(){
-  QString result = ctn_TDESU;
-  result += " -d ";
-  result += " -t ";
-  result += " --noignorebutton ";
-
-  return result;
-}
-
-QString WMHelper::getKTSUSSCommand(){
-  QString result = ctn_KTSUSS;
-
-  result += " -m " + QString("\"") + StrConstants::getEnterAdministratorsPassword() + QString("\"");
-  result += " -u root ";
-
-  return result;
-}
-
-QString WMHelper::getGKSUCommand(){
-  QString result;
-  result = UnixCommand::discoverBinaryPath(ctn_GKSU_2);
-  result += " -u root -m " + QString("\"") + StrConstants::getEnterAdministratorsPassword() + QString("\" ");
-
-  return result;
-}
-
-QString WMHelper::getSUCommand(){
-  QString result(ctn_NO_SU_COMMAND);
-
-  if (UnixCommand::isRootRunning()){
-    result = ctn_ROOT_SH;
-  }
-  else{
-    if (SettingsManager::getPrivilegeEscalationTool() == ctn_AUTOMATIC){
-      //User wants QTGZ to automatically choose Privilege escalation tool
-      if (isXFCERunning() && (UnixCommand::hasTheExecutable(ctn_GKSU_2))){
-        result = getGKSUCommand();
-      }
-      else if (isKDERunning() && UnixCommand::hasTheExecutable(ctn_KDESU)){
-        result = getKDESUCommand();
-      }
-      else if (isTDERunning() && UnixCommand::hasTheExecutable(ctn_TDESU)){
-        result = getTDESUCommand();
-      }
-      else if (UnixCommand::hasTheExecutable(ctn_GKSU_2)){
-        result = getGKSUCommand();
-      }
-      else if (UnixCommand::isKtsussVersionOK()){
-        result = getKTSUSSCommand();
-      }
-      else if (UnixCommand::hasTheExecutable(ctn_KDESU)){
-        result = getKDESUCommand();
-      }
-      else if (UnixCommand::hasTheExecutable(ctn_TDESU)){
-        result = getTDESUCommand();
-      }
-    }
-    //Otherwise, user chose his own privilege escalation tool...
-    else if (SettingsManager::getPrivilegeEscalationTool() == ctn_GKSU_2)
-      result = getGKSUCommand();
-    else if (SettingsManager::getPrivilegeEscalationTool() == ctn_KDESU)
-      result = getKDESUCommand();
-    else if (SettingsManager::getPrivilegeEscalationTool() == ctn_TDESU)
-      result = getTDESUCommand();
-    else if (SettingsManager::getPrivilegeEscalationTool() == ctn_KTSUSS){
-      result = getKTSUSSCommand();
-    }
-  }
-
-  return result;
 }
 
 void WMHelper::openFile( const QString& fileName, const QString& package ){

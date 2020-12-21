@@ -940,8 +940,8 @@ void MainWindowImpl::createTabPkgDiff(const QString pkg, const QString installed
   QString bgColor("");
 
   for(QString s: ldiff){
-    if ((s[0] != '<') && (s[0] != '>')) continue;
-    if (s[0] == '<'){
+    if ((!s.isEmpty()) && (s.at(0) != '<') && (s.at(0) != '>')) continue;
+    if (!s.isEmpty() && s.at(0) == '<'){
       if (n % 2 == 0){
         bgColor = altColor;
         leftColor = "#000000";
@@ -954,7 +954,7 @@ void MainWindowImpl::createTabPkgDiff(const QString pkg, const QString installed
       html += "<tr bgcolor=" + bgColor + "><td valign=\"middle\"><><font color=" + leftColor + ">" +
         s.mid(2) + "</></td><td valign=\"middle\"></td></tr>";
     }
-    else if (s[0] == '>') {
+    else if (!s.isEmpty() && s.at(0) == '>') {
       if (n % 2 == 0){
         bgColor = altColor;
         rightColor = "#000000";

@@ -344,15 +344,15 @@ void MainWindowImpl::initializeDirTreeView(){
 
   QModelIndex index;
 
-  QString initialDir = m_argList->getSwitchArg("-initialdir", "");
-  if ((initialDir != "") and (QFile::exists(initialDir))) index = m_modelDir->index(initialDir);
-  else if (initialDir == "") initialDir = SettingsManager::instance()->getDefaultDirectory();
+  m_initialDir = m_argList->getSwitchArg("-initialdir", "");
+  if ((m_initialDir != "") and (QFile::exists(m_initialDir))) index = m_modelDir->index(m_initialDir);
+  else if (m_initialDir == "") m_initialDir = SettingsManager::instance()->getDefaultDirectory();
 
   m_modelDir->sort(0, Qt::AscendingOrder);
   tvDir->setSortingEnabled(true);
   tvDir->sortByColumn(0, Qt::AscendingOrder);
   m_modelDir->setRootPath("");
-  m_modelDir->setIconProvider(new QDnDDirModelIconProvider(initialDir));
+  m_modelDir->setIconProvider(new QDnDDirModelIconProvider(m_initialDir));
 
   QString style ("QLineEdit {" //"QDockWidget::title { "
                  "border: 1px solid gray;"
@@ -369,16 +369,18 @@ void MainWindowImpl::initializeDirTreeView(){
 
   m_titleDockDirectories->setStyleSheet(style);
 
-  index = m_modelDir->index(initialDir);
+  index = m_modelDir->index(m_initialDir);
   tvDir->setModel(m_modelDir);
   tvDir->setColumnHidden(1, true);
   tvDir->setColumnHidden(2, true);
   tvDir->setColumnHidden(3, true);
   tvDir->header()->hide();
-  tvDir->setStyleSheet( StrConstants::getTreeViewCSS(SettingsManager::getDirectoryFontSize()) );
   tvDir->setAcceptDrops(true);
   tvDir->setDropIndicatorShown(true);
+
+  tvDir->scrollTo(index, QAbstractItemView::PositionAtCenter);
   tvDir->setCurrentIndex(index);
+  tvDir->setStyleSheet( StrConstants::getTreeViewCSS(SettingsManager::getDirectoryFontSize()) );
 
   static bool onlyOnce = false;
 

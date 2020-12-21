@@ -201,7 +201,7 @@ public:
   }
 
   static QString getToolBarCSS(){
-    return QString("QToolBar { border: 0px; } ");
+    return QString("QToolBar { border-bottom: 1px; border-top: 1px; } ");
     //               "QToolTip {}"
     //               );
   }

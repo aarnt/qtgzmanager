@@ -49,7 +49,7 @@ QString UnixCommand::runCommand(const QString& commandToRun){
 
   QStringList params;
   proc.start(commandToRun, params);
-  proc.waitForStarted();
+  proc.waitForStarted(-1);
   proc.waitForFinished(-1);
   QString res = proc.readAllStandardError();
   proc.close();
@@ -68,7 +68,7 @@ QString UnixCommand::runCurlCommand(const QString& commandToRun){
 
   QStringList params;
   proc.start(commandToRun, params);
-  proc.waitForStarted();
+  proc.waitForStarted(-1);
   proc.waitForFinished(-1);
 
   QString res("");
@@ -208,7 +208,7 @@ QByteArray UnixCommand::getPackageContents(const QString& pkgName){
   args << pkgName;
 
   tar.start ( "tar", args );
-  if ( !( tar.waitForStarted() ) ) return ctn_PKG_CONTENT_ERROR.toLatin1();
+  if ( !( tar.waitForStarted(-1) ) ) return ctn_PKG_CONTENT_ERROR.toLatin1();
   if ( !( tar.waitForFinished(-1) ) ) return ctn_PKG_CONTENT_ERROR.toLatin1();
 
   res = tar.readAllStandardError();
@@ -453,8 +453,8 @@ QString UnixCommand::executeDiffToEachOther( QString pkg1, QString pkg2 ){
   slParam << fIPkg.fileName();
 
   proc.start("diff", slParam);
-  proc.waitForStarted();
-  proc.waitForFinished();
+  proc.waitForStarted(-1);
+  proc.waitForFinished(-1);
 
   fPkg.close();
   fIPkg.close();
@@ -499,8 +499,8 @@ QString UnixCommand::executeDiffToInstalled( QString pkg, QString installedPacka
   slParam << fPkg.fileName();
   slParam << fIPkg.fileName();
   proc.start("diff", slParam);
-  proc.waitForStarted();
-  proc.waitForFinished();
+  proc.waitForStarted(-1);
+  proc.waitForFinished(-1);
 
   fPkg.close();
   fIPkg.close();
