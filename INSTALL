@@ -1,8 +1,8 @@
-This is QTGZManager 1.0 RC1 release.
+This is QTGZManager 1.1.0 (dev) release.
 
 A Slackware based system is needed in order to use QTGZManager, 
-as well as Qt 4.5.x libraries. 
-Note that if you're running Slackware 13.0 or above you already have Qt4 libs.
+as well as Qt 5.x libraries. 
+Note that if you're running Slackware 15.0 or above you already have Qt5 libs.
 
 There are two ways to install QTGZManager:
 
