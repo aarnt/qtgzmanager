@@ -8,6 +8,7 @@ qrc_resources.cpp
 sudo/*.qm
 sudo/*.o
 sudo/*.pro.user
+sudo/qmake*.qrc
 sudo/Makefile
 sudo/qtgzmanager-sudo
 sudo/moc*.*
