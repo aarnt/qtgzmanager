@@ -6,4 +6,6 @@
 It consists of a lxqt-sudo clone called [qtgzmanager-sudo](https://github.com/aarnt/qtgzmanager/tree/master/sudo) used to gain root privileges and a package browser application used
 to search, install, remove and update packages.
 
+You can read [INSTALL](https://github.com/aarnt/qtgzmanager/blob/master/INSTALL) for compiling instructions.
 
+Enjoy!
