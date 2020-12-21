@@ -77,7 +77,6 @@ void SetupDialog::initialize(){
   tabWidget->setCurrentIndex(0);
   initButtonBox();
   initCheckBoxes();
-  initComboPrivilege();
   initFontSlider();
   initGroupBox();
   initMirrorTableWidget();
@@ -119,25 +118,6 @@ void SetupDialog::initFontSlider(){
   sliderFont->setSingleStep(1);  
   sliderFont->setPageStep(1);
   sliderFont->setValue(SettingsManager::getFontSizeFactor());
-}
-
-void SetupDialog::initComboPrivilege(){
-  /*cbPrivilege->addItem(StrConstants::getAutomaticSuCommand());
-
-  if (UnixCommand::hasTheExecutable(ctn_GKSU_1) || (UnixCommand::hasTheExecutable(ctn_GKSU_2)))
-    cbPrivilege->addItem(ctn_GKSU_2);
-  if (UnixCommand::hasTheExecutable(ctn_KDESU))
-    cbPrivilege->addItem(ctn_KDESU);
-  if (UnixCommand::hasTheExecutable(ctn_TDESU))
-    cbPrivilege->addItem(ctn_TDESU);
-  if (UnixCommand::hasTheExecutable(ctn_KTSUSS) && UnixCommand::isKtsussVersionOK())
-    cbPrivilege->addItem(ctn_KTSUSS);
-
-  int index = cbPrivilege->findText(SettingsManager::getPrivilegeEscalationTool());
-  if (index >= 0)
-    cbPrivilege->setCurrentIndex(index);
-  else
-    cbPrivilege->setCurrentIndex(0);*/
 }
 
 void SetupDialog::initGroupBox(){
@@ -301,7 +281,6 @@ void SetupDialog::restoreDefaults(QAbstractButton* button){
       cbStartHidden->setChecked(false);
       cbHighlightItems->setChecked(true);
       sbHighlightItems->setValue(100);
-      //cbPrivilege->setCurrentIndex(0);
       sliderFont->setValue(0);
 
       rbPkgTools->setChecked(true);
@@ -385,13 +364,6 @@ void SetupDialog::accept(){
   if (SettingsManager::getUseSilentActionOutput() != cbUseSilentOuput->isChecked())
     SettingsManager::setUseSilentActionOutput(cbUseSilentOuput->isChecked());
 
-  /*if (SettingsManager::getPrivilegeEscalationTool() != cbPrivilege->currentText()){
-    if (cbPrivilege->currentIndex() != 0)
-      SettingsManager::setPrivilegeEscalationTool(cbPrivilege->currentText());
-    else
-      SettingsManager::setPrivilegeEscalationTool(ctn_AUTOMATIC);
-  }*/
-
   if (needsAppRestart){
     QMessageBox::information(this, StrConstants::getAttention(), StrConstants::getWarnNeedsAppRestart());
   }
@@ -400,7 +372,8 @@ void SetupDialog::accept(){
 }
 
 void SetupDialog::testMirrors(){
-  for (int r=0; r<twMirror->rowCount(); r++){
+  for (int r=0; r<twMirror->rowCount(); r++)
+  {
     QTableWidgetItem *item = twMirror->item(r, 1);
     QString mirror = item->text();
     QProcess proc;

@@ -192,7 +192,7 @@ void SettingsManager::moveUpdaterDirContents(){
 
   QStringList files = dir.entryList(QDir::Files | QDir::NoDotAndDotDot);
   if (files.count() > 0) {
-    foreach (QString file, files){
+    for (QString file: files){
       if (QFile::copy(oldUpdaterDir + QDir::separator() + file,
                       newUpdaterDir + QDir::separator() + file))
         QFile::remove(oldUpdaterDir + QDir::separator() + file);

@@ -196,7 +196,7 @@ QString Updater::getListOfAvailableUpdates(){
   if (m_lastProblem == ectn_NONE){    
     result += "<br><pre><ol>";
 
-    foreach(Patch p, m_patchesList){
+    for(Patch p: m_patchesList){
       result += "<li><h4>" + p.getFileName() + "</h4></li>";
     }
 
@@ -579,7 +579,7 @@ Problem Updater::getPackagesTxtFromMirror(){
   nameFilters << "updater_CHECKSUMS_*";
   QStringList filesToRemove = tmp.entryList(nameFilters, QDir::Files);
 
-  foreach(QString fileToRemove, filesToRemove){
+  for(QString fileToRemove: filesToRemove){
     QFile f("/tmp/" + fileToRemove);
     f.remove();
   }
@@ -735,7 +735,7 @@ void Updater::parsePackagesTxt(){
   packageListFile.close();
 
   //Make the list show only the packages available for update (that weren't downloaded).
-  foreach (Patch p, m_patchesList){
+  for(Patch p: m_patchesList){
     Result status = Package::getStatus(p.getFileName());
 
     if (status.getClassification() != ectn_SUPERIOR_VERSION &&
@@ -812,7 +812,7 @@ int Updater::getNumberOfUpdatesAvailable(){
 int Updater::downloadAllUpdates(){
   int updatesDownloaded = 0;
 
-  foreach( Patch p, m_patchesList ){
+  for( Patch p: m_patchesList ){
     Problem ret = getPackageFromMirror(p.getSubdirectory(), p.getFileName());
 
     if (ret == ectn_NONE){
@@ -836,7 +836,7 @@ QString Updater::testParsePackagesTxt(){
   parsePackagesTxt();
   QString output("<pre>");
 
-  foreach(Patch p, m_patchesList){
+  for(Patch p: m_patchesList){
     output += p.getDescription() + "<br/><br/>";
   }
 

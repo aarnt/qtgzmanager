@@ -357,7 +357,7 @@ void MainWindowImpl::execContextMenuPackages(QPoint point){
 
 	QList<SelectedPackage> lsp = getSelectedPackage();	
 
-	foreach(SelectedPackage ami, lsp){  
+  for(SelectedPackage ami: lsp){
     if ((lastType.cacheKey() != 0) &&
         (lastType.pixmap(QSize(22,22)).toImage()) != ami.getIcon().pixmap(QSize(22,22)).toImage())
       allSameType = false;
@@ -480,7 +480,7 @@ void MainWindowImpl::execContextMenuInstalledPackages(QPoint point){
 	bool allSameType = true;
   QIcon lastType;
 
-	foreach(QModelIndex item, tvInstalledPackages->selectionModel()->selectedIndexes()){
+  for(QModelIndex item: tvInstalledPackages->selectionModel()->selectedIndexes()){
     if (item.column() == ctn_PACKAGE_ICON){
       QModelIndex mi = m_proxyModelInstalledPackages->mapToSource(item);
       if ((lastType.cacheKey() != 0) &&
@@ -1002,7 +1002,7 @@ void MainWindowImpl::deleteFile(){
                                 QMessageBox::No);
 
 	if (res == QMessageBox::Yes){
-		foreach (SelectedPackage mi, lmi){
+    for(SelectedPackage mi: lmi){
       QString fileToDelete = mi.getCompleteFileName();
       QFile::remove(fileToDelete);
       //if there's a signature, delete it too.
@@ -1269,7 +1269,7 @@ void MainWindowImpl::showPackagesInDirectory( bool preserveSelected ){
 
   QList<QStandardItem*> items, icons;
 
-	foreach (QString str, list) {
+  for(QString str: list) {
     Result res = Package::getStatus(str);
 		QStandardItem *s;
 
@@ -1420,7 +1420,7 @@ void MainWindowImpl::selectInstalledPackage(){
     return; //Is this right?
 	} 
 	
-	foreach( SelectedPackage sp, lt ){
+  for( SelectedPackage sp: lt ){
     Result res = Package::getStatus(sp.getFileName());
 		if (res.getInstalledPackage().size() > 0){
 			QList<QStandardItem*> l = 
@@ -1518,7 +1518,7 @@ void MainWindowImpl::positionInPkgFileList( const QString &fileName, const QStri
     QStandardItemModel *sim = qobject_cast<QStandardItemModel*>(t->model());
     QList<QStandardItem*> fileList = sim->findItems(fileName, Qt::MatchContains|Qt::MatchRecursive, 0);
 
-    foreach(QStandardItem *it, fileList){
+    for(QStandardItem *it: fileList){
       if(it->icon().pixmap(QSize(22,22)).toImage() == IconHelper::getIconFolder().pixmap(QSize(22,22)).toImage()) continue;
 
       QString fullPath = showFullPathOfObject(it->parent()->index());
@@ -1540,14 +1540,14 @@ QList<SelectedPackage> MainWindowImpl::getSelectedPackage(){
 	QList<QIcon> licons;
 	int c=0;
 
-  foreach(QModelIndex item, tvPackage->selectionModel()->selectedRows(ctn_PACKAGE_ICON)){
+  for(QModelIndex item: tvPackage->selectionModel()->selectedRows(ctn_PACKAGE_ICON)){
     QModelIndex mi = m_proxyModelPackage->mapToSource(item);
     QStandardItem *si = m_modelPackage->item( mi.row(), ctn_PACKAGE_ICON );
 		if (si != 0) 
 			licons << si->icon();
 	}
 
-  foreach(QModelIndex item, tvPackage->selectionModel()->selectedRows(ctn_PACKAGE_NAME)){
+  for(QModelIndex item: tvPackage->selectionModel()->selectedRows(ctn_PACKAGE_NAME)){
     QModelIndex mi = m_proxyModelPackage->mapToSource(item);
     QStandardItem *si = m_modelPackage->item( mi.row(), ctn_PACKAGE_NAME );
 		if (si != 0){ 
@@ -1561,7 +1561,7 @@ QList<SelectedPackage> MainWindowImpl::getSelectedPackage(){
 
 QList<SelectedPackage> MainWindowImpl::getSelectedInstalledPackage(){
 	QList<SelectedPackage> lsp;
-	foreach(QModelIndex item, tvInstalledPackages->selectionModel()->selectedIndexes()){
+  for(QModelIndex item: tvInstalledPackages->selectionModel()->selectedIndexes()){
     if ( item.column() == ctn_PACKAGE_NAME ){
       lsp << SelectedPackage(ctn_PACKAGES_DIR, m_proxyModelInstalledPackages->data(item, 0).toString());
 		}
@@ -1576,7 +1576,7 @@ void MainWindowImpl::showPackageInfo(){
 
 	QList<SelectedPackage> lsp = getSelectedPackage();
 	if (lsp.count() > 1) return;
-	foreach(SelectedPackage sp, lsp){       	
+  for(SelectedPackage sp: lsp){
     if ( sp.getIcon().pixmap(QSize(22,22)).toImage() == IconHelper::getIconRPM().pixmap(QSize(22,22)).toImage() ) continue;
 
 		CPUIntensiveComputing *ri = new CPUIntensiveComputing();
@@ -1594,7 +1594,7 @@ void MainWindowImpl::showInstalledPackageInfo(){
 	QCoreApplication::processEvents();	
 	QList<SelectedPackage> lsp = getSelectedInstalledPackage();
 
-	foreach(SelectedPackage sp, lsp){
+  for(SelectedPackage sp: lsp){
 		CPUIntensiveComputing *ri = new CPUIntensiveComputing();
 		QString sb = Package::getInformation(sp.getCompleteFileName(), true);
 		delete ri;
@@ -1641,7 +1641,7 @@ bool MainWindowImpl::showPackageContent(){
   bool res=false;
 
 	if (tvInstalledPackages->hasFocus()){
-		foreach( SelectedPackage sp, getSelectedInstalledPackage() ){  			
+    for( SelectedPackage sp: getSelectedInstalledPackage() ){
 			alreadyExists = false;
 
 			//First we check if there's not a tab opened with this pkgName contents
@@ -1663,7 +1663,7 @@ bool MainWindowImpl::showPackageContent(){
     }
   }
 	else{
-		foreach( SelectedPackage sp, getSelectedPackage() ){  			
+    for( SelectedPackage sp: getSelectedPackage() ){
 			alreadyExists = false;
 
       if (Package::getStatus(sp.getFileName()).getClassification() == ectn_RPM){

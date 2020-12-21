@@ -143,7 +143,7 @@ void MainWindowImpl::keyReleaseEvent(QKeyEvent* ke){
       if ( (cur_dir != m_modelDir->filePath(tvDir->currentIndex()) ) ||
            (ke->key() != k) || (fi.count() != k_count) ) i=0;
 
-      foreach (QStandardItem* si, fi){
+      for(QStandardItem* si: fi){
         QModelIndex mi = si->index();
         mi = m_proxyModelPackage->mapFromSource(mi);
         if (!m_proxyModelPackage->hasIndex(mi.row(), mi.column())) fi.removeAll(si);
@@ -191,7 +191,7 @@ void MainWindowImpl::keyReleaseEvent(QKeyEvent* ke){
     if (fi.count() > 0){
       if ( (ke->key() != k) || (fi.count() != k_count) ) i=0;
 
-      foreach (QStandardItem* si, fi){
+      for(QStandardItem* si: fi){
         QModelIndex mi = si->index();
         mi = m_proxyModelInstalledPackages->mapFromSource(mi);
         if (!m_proxyModelInstalledPackages->hasIndex(mi.row(), mi.column())) fi.removeAll(si);
@@ -281,7 +281,7 @@ void MainWindowImpl::keyPressEvent(QKeyEvent* ke){
          UnixCommand::hasTheExecutable(ctn_TGZ2LZMBIN) ||
          UnixCommand::hasTheExecutable(ctn_MAKELZMBIN) )) {
 
-    foreach(SelectedPackage ami, getSelectedPackage())
+    for(SelectedPackage ami: getSelectedPackage())
       if (ami.getIcon().pixmap(QSize(22,22)).toImage() ==
           IconHelper::getIconRPM().pixmap(QSize(22,22)).toImage()) return;
 
@@ -475,12 +475,14 @@ void MainWindowImpl::keyPressEvent(QKeyEvent* ke){
 }
 
 void MainWindowImpl::_cutCopyPackages(){
-  SelectedPackage pkg;
-  foreach(pkg, getSelectedPackage()){
+  QString path;
+
+  for(SelectedPackage pkg: getSelectedPackage()){
     m_packagesClipboard.add(pkg.getFileName());
+    path=pkg.getPath();
   }
 
-  m_packagesClipboard.setSourceDir(pkg.getPath());
+  m_packagesClipboard.setSourceDir(path);
 }
 
 void MainWindowImpl::cutPackages(){
@@ -502,7 +504,7 @@ void MainWindowImpl::pastePackages(){
   QString sourceDir = m_packagesClipboard.getSourceDir();
   QString targetDir = dockDirectories->windowTitle();
 
-  foreach(QString pkg, m_packagesClipboard.getPackageList()){
+  for(QString pkg: m_packagesClipboard.getPackageList()){
     qApp->processEvents();
     QFile fileToCopy(sourceDir + QDir::separator() + pkg);
 

@@ -59,14 +59,14 @@ QMimeData* QDnDStandardItemModel::mimeData(const QModelIndexList &indexes) const
   QDataStream stream(&encodedData, QIODevice::WriteOnly);
 
   MainWindowImpl* w=0;
-  foreach (QWidget *widget, QApplication::topLevelWidgets()) {
+  for (QWidget *widget: QApplication::topLevelWidgets()) {
     if (widget->objectName() == "MainWindow") w = (MainWindowImpl*) widget;
   }  
   
   QDir d(w->getModelDir()->filePath(w->tvDir->currentIndex()));
 	QString path = d.absolutePath() + QDir::separator();
 
-  foreach(QModelIndex index, indexes){
+  for(QModelIndex index: indexes){
     if ( (index.isValid()) && (index.column() == ctn_PACKAGE_NAME )){
       QString text = path + data(index, Qt::DisplayRole).toString();
       stream << text;      
@@ -81,7 +81,7 @@ bool QDnDStandardItemModel::dropMimeData(const QMimeData *data, Qt::DropAction,
   int, int, const QModelIndex &) {
 
   MainWindowImpl* w = 0;  
-  foreach (QWidget *widget, QApplication::topLevelWidgets()) {
+  for (QWidget *widget: QApplication::topLevelWidgets()) {
     if (widget->objectName() == "MainWindow") w = (MainWindowImpl*) widget;
   }  
 
@@ -97,12 +97,12 @@ bool QDnDStandardItemModel::dropMimeData(const QMimeData *data, Qt::DropAction,
     items << text;
   }
 
-	foreach (QString sourceFilePath, items){	
+  for (QString sourceFilePath: items){
     QString pkg = sourceFilePath.mid(sourceFilePath.lastIndexOf(QDir::separator()) + 1);
     QList<SelectedPackage> lsp = w->getSelectedPackage();
     SelectedPackage sp;
 
-    foreach ( SelectedPackage l, lsp ){
+    for ( SelectedPackage l: lsp ){
       if ( l.getFileName() == pkg ){
         sp = l;
         break;

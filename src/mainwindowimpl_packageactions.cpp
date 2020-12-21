@@ -213,7 +213,7 @@ QString MainWindowImpl::getHtmlListOfCancelledActions(){
     htmlList += "<pre>" + tr("The installation of the following packages was canceled:");
     htmlList += "<ul>";
 
-    foreach(QString discardedPackage, m_discardedPackageList){
+    for(QString discardedPackage: m_discardedPackageList){
       htmlList += "<li>" + discardedPackage + "</li>";
     }
 
@@ -606,13 +606,13 @@ void MainWindowImpl::transformTGZinLZM(){
   int tgzCount=0;
   QList<SelectedPackage> lsp = getSelectedPackage();
 
-  foreach(SelectedPackage ami, lsp){
+  for(SelectedPackage ami: lsp){
     if (ami.getIcon().pixmap(QSize(22,22)).toImage() != IconHelper::getIconRPM().pixmap(QSize(22,22)).toImage())
         tgzCount++;
   }
 
   if ( tgzCount == lsp.count() ){
-    foreach(SelectedPackage sp, lsp){
+    for(SelectedPackage sp: lsp){
       out << sp.getCompleteFileName();
     }
 
@@ -641,7 +641,7 @@ void MainWindowImpl::transformRPMinTGZ(const QString &rpmPackage){
   if (rpmPackage == ""){
     QList<SelectedPackage> lsp = getSelectedPackage();
 
-    foreach(SelectedPackage sp, lsp){
+    for(SelectedPackage sp: lsp){
       out << sp.getCompleteFileName();
     }
   }
@@ -667,7 +667,7 @@ void MainWindowImpl::transformRPMinTGZ(const QString &rpmPackage){
 void MainWindowImpl::insertInstallPackageAction(){
   if (m_unixCommand != 0) return;
 
-  foreach(SelectedPackage sp, getSelectedPackage()){
+  for(SelectedPackage sp: getSelectedPackage()){
     if ((m_modelTodo->findItems(sp.getCompleteFileName(), Qt::MatchRecursive).size()==0)
       && (Package::isValid(sp.getCompleteFileName())))
       m_install->appendRow(new QStandardItem(sp.getCompleteFileName()));
@@ -681,7 +681,7 @@ void MainWindowImpl::insertInstallPackageAction(){
 void MainWindowImpl::insertDowngradePackageAction(){
   if (m_unixCommand != 0) return;
 
-  foreach(SelectedPackage sp, getSelectedPackage()){
+  for(SelectedPackage sp: getSelectedPackage()){
     if ((m_modelTodo->findItems(sp.getCompleteFileName(), Qt::MatchRecursive).size()==0)
       && (Package::isValid(sp.getCompleteFileName())))
       m_downgrade->appendRow(new QStandardItem(sp.getCompleteFileName()));
@@ -696,14 +696,14 @@ void MainWindowImpl::insertRemovePackageAction(){
   if (m_unixCommand != 0) return;
 
   if (tvPackage->hasFocus()){
-    foreach(SelectedPackage sp, getSelectedPackage()){
+    for(SelectedPackage sp: getSelectedPackage()){
       if (((m_modelTodo->findItems(sp.getCompleteFileName(), Qt::MatchRecursive).size()==0))
         && (Package::isValid(sp.getCompleteFileName())))
         m_remove->appendRow(new QStandardItem(sp.getCompleteFileName()));
     }
   }
   else if (tvInstalledPackages->hasFocus()){
-    foreach(SelectedPackage sp, getSelectedInstalledPackage()){
+    for(SelectedPackage sp: getSelectedInstalledPackage()){
       if ((m_modelTodo->findItems(sp.getCompleteFileName(), Qt::MatchRecursive).size()==0))
         m_remove->appendRow(new QStandardItem(sp.getCompleteFileName()));
     }
@@ -725,7 +725,7 @@ void MainWindowImpl::insertRemovePackageAction(QString packageName){
 
 void MainWindowImpl::insertUpgradePackageAction(){
   if (m_unixCommand != 0) return;
-  foreach(SelectedPackage sp, getSelectedPackage()){
+  for(SelectedPackage sp: getSelectedPackage()){
     if ((m_modelTodo->findItems(sp.getCompleteFileName(), Qt::MatchRecursive).size()==0)
       && (Package::isValid(sp.getCompleteFileName())))
       m_upgrade->appendRow(new QStandardItem(sp.getCompleteFileName()));
@@ -739,7 +739,7 @@ void MainWindowImpl::insertUpgradePackageAction(){
 void MainWindowImpl::insertReinstallPackageAction(){
   if (m_unixCommand != 0) return;
 
-  foreach(SelectedPackage sp, getSelectedPackage()){
+  for(SelectedPackage sp: getSelectedPackage()){
     if ((m_modelTodo->findItems(sp.getCompleteFileName(), Qt::MatchRecursive).size()==0)
       && (Package::isValid(sp.getCompleteFileName())))
       m_reinstall->appendRow(new QStandardItem(sp.getCompleteFileName()));
@@ -752,7 +752,7 @@ void MainWindowImpl::insertReinstallPackageAction(){
 
 void MainWindowImpl::freezePackage(){
   int bkSize = m_frozenPkgList->count();
-  foreach(QModelIndex item, tvInstalledPackages->selectionModel()->selectedIndexes()){
+  for(QModelIndex item: tvInstalledPackages->selectionModel()->selectedIndexes()){
     if ( item.column() == ctn_PACKAGE_ICON ){
       QStandardItem *si = new QStandardItem( IconHelper::getIconFrozen(), "Frozen" );
       QModelIndex mi = m_proxyModelInstalledPackages->mapToSource( item );
@@ -772,7 +772,7 @@ void MainWindowImpl::freezePackage(){
 
 void MainWindowImpl::unfreezePackage(){
   int bkSize = m_frozenPkgList->count();
-  foreach(QModelIndex item, tvInstalledPackages->selectionModel()->selectedIndexes()){
+  for(QModelIndex item: tvInstalledPackages->selectionModel()->selectedIndexes()){
     if ( item.column() == ctn_PACKAGE_ICON ){
       QStandardItem *si = new QStandardItem( IconHelper::getIconUnFrozen(), "UnFrozen" );
       QModelIndex mi = m_proxyModelInstalledPackages->mapToSource( item );
@@ -799,7 +799,7 @@ void MainWindowImpl::_openSnapshotOfInstalledPackages(const QString snapshotFile
   QString out("");
 
   if (res.getDetails().count() > 0){
-    foreach (QString pkg, res.getDetails()){
+    for(QString pkg: res.getDetails()){
       out += pkg.append("\n");
     }
   }
@@ -826,7 +826,7 @@ void MainWindowImpl::_openSnapshotOfInstalledPackages(const QString snapshotFile
     qApp->processEvents();
 
     if (result == QMessageBox::Yes){
-      foreach (QString pkg, res.getNewPackagesList()){
+      for(QString pkg: res.getNewPackagesList()){
         insertRemovePackageAction(pkg);
       }
     }
@@ -885,7 +885,7 @@ void MainWindowImpl::createTabSnapshotAnalisys(QString snapshotFileName, QString
   QString altColor = "\"#E5E5E5\"";  //"\"#D4DED9\"";
   QString html("");
 
-  foreach (QString line, lines){
+  for(QString line: lines){
     if (line.at(0) != '=')
     {
       int div = line.indexOf("[");
@@ -939,7 +939,7 @@ void MainWindowImpl::createTabPkgDiff(const QString pkg, const QString installed
   QString rightColor = ""; //"\"#1B1C1F\"";
   QString bgColor("");
 
-  foreach (QString s, ldiff){
+  for(QString s: ldiff){
     if ((s[0] != '<') && (s[0] != '>')) continue;
     if (s[0] == '<'){
       if (n % 2 == 0){
@@ -1037,7 +1037,7 @@ void MainWindowImpl::createTabPkgFileList(const QString pkgName, const QStringLi
   QString fullPath;
   bool isSymLinkToDir = false;
 
-  foreach ( QString file, fileList )
+  for( QString file: fileList )
   {
     QFileInfo fi ( file );  
     bool isDir = file.endsWith('/');
@@ -1163,7 +1163,7 @@ void MainWindowImpl::createTabPkgFileList(const QString pkgName, const QStringLi
 
   QList<QStandardItem*> lit = modelPkgFileList->findItems( "/", Qt::MatchStartsWith | Qt::MatchRecursive );
 
-  foreach( QStandardItem* it, lit ){
+  for( QStandardItem* it: lit ){
     QFileInfo fi( it->text() );
     if ( fi.isFile() == false ){
       QString s( it->text() );

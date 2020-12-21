@@ -377,7 +377,7 @@ void UnixCommand::removeTemporaryFiles(){
   nameFilters << "qtsingleapp*" << "gpg*";
   QFileInfoList list = tempDir.entryInfoList(nameFilters, QDir::Dirs | QDir::Files | QDir::System);
 
-  foreach(QFileInfo file, list){
+  for(QFileInfo file: list){
     QFile fileAux(file.filePath());
     //std::cout << "Found: " << file.fileName().toAscii().data() << std::endl;
 
@@ -389,7 +389,7 @@ void UnixCommand::removeTemporaryFiles(){
       QDir dir(file.filePath());
       QFileInfoList listd = dir.entryInfoList(QDir::Files | QDir::System);
 
-      foreach(QFileInfo filed, listd){
+      for(QFileInfo filed: listd){
         QFile fileAuxd(filed.filePath());
         fileAuxd.remove();
       }
@@ -442,8 +442,8 @@ QString UnixCommand::executeDiffToEachOther( QString pkg1, QString pkg2 ){
   QTextStream tsp(&fPkg);
   QTextStream tsip(&fIPkg);
 
-  foreach(QString s, sl) tsp << s << Qt::endl;
-  foreach(QString s, sl2) tsip << s << Qt::endl;
+  for(QString s: sl) tsp << s << Qt::endl;
+  for(QString s: sl2) tsip << s << Qt::endl;
 
   QStringList slParam;
   QProcess proc;
@@ -488,8 +488,8 @@ QString UnixCommand::executeDiffToInstalled( QString pkg, QString installedPacka
   QTextStream tsp(&fPkg);
   QTextStream tsip(&fIPkg);
 
-  foreach(QString s, sl2) tsp << s << Qt::endl;
-  foreach(QString s, sl) tsip << s << Qt::endl;
+  for(QString s: sl2) tsp << s << Qt::endl;
+  for(QString s: sl) tsip << s << Qt::endl;
 
   //Here, we execute the diff
   QStringList slParam;
@@ -537,14 +537,14 @@ void UnixCommand::transformTGZinLZM( const QStringList& commandList, LZMCommand 
   m_process->setWorkingDirectory(fi.absolutePath());
 
   if (commandUsed == ectn_TXZ2SB) {
-    foreach(QString line, commandList){
+    for(QString line: commandList){
       out << "echo -e " << StrConstants::getExecutingCommand() <<
              " \\\x27" << "txz2sb " << line << "\\\x27...\n";
       out << "txz2sb " << line << "\n";
     }
   }
   else if (commandUsed == ectn_TGZ2LZM) {
-    foreach(QString line, commandList){
+    for(QString line: commandList){
       QFileInfo fi(line);
       QString newFile = fi.fileName();
       newFile = newFile.replace(".tgz", ".lzm");
@@ -554,7 +554,7 @@ void UnixCommand::transformTGZinLZM( const QStringList& commandList, LZMCommand 
     }
   }
   else if (commandUsed == ectn_MAKELZM) {
-    foreach(QString line, commandList){
+    for(QString line: commandList){
       out << "echo -e " << StrConstants::getExecutingCommand() <<
              " \\\x27" << "make-lzm " << line << "\\\x27...\n";
       out << "make-lzm " << line << "\n";

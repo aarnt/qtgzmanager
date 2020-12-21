@@ -184,7 +184,7 @@ void FindDialogImpl::setQStandardItemModel( const QStandardItemModel *sim, QStan
       path1 = path1.remove(-aux.length(), aux.length());
       QStringList spath1 = path1.split("/", Qt::SkipEmptyParts);
 
-      foreach(QString res, spath1){
+      for(QString res: spath1){
         root->appendRow(new QStandardItem(res));
         root = root->child(0,0);
         root->setAccessibleDescription("directory");
@@ -308,8 +308,8 @@ void FindDialogImpl::finishedSearch(){
 
   if (m_searchPlace == ectn_INSIDE_INSTALLED_PACKAGES){
     m_mutex->lock();
-    foreach( QString k, m.keys() ){
-      foreach( QString pkg, m.value(k) ){
+    for( QString k: m.keys() ){
+      for( QString pkg: m.value(k) ){
         QFileInfo fi(pkg);
         if ( ((!fi.exists()) || (fi.isFile())) && ( fi.fileName().contains(QRegExp(search, Qt::CaseInsensitive))))
           findCount ++;
@@ -348,8 +348,8 @@ void FindDialogImpl::finishedSearch(){
 
   else if (m_searchPlace == ectn_INSIDE_DIRECTORY){
     m_mutex->lock();
-    foreach( QString k, m.keys() ){
-      foreach( QString pkg, m.value(k) ){
+    for( QString k: m.keys() ){
+      for( QString pkg: m.value(k) ){
         if ( (pkg.contains(QRegExp(search, Qt::CaseInsensitive)))){
           findCount ++;
         }
@@ -425,8 +425,8 @@ void FindDialogImpl::finishedSearch(){
   }
   else if (m_searchPlace == ectn_INSIDE_QSTDITEMMODEL){
     m_mutex->lock();
-    foreach( QString k, m.keys() ){
-      foreach( QString pkg, m.value(k) ){
+    for( QString k: m.keys() ){
+      for( QString pkg: m.value(k) ){
         if ( (pkg.contains(QRegExp(search, Qt::CaseInsensitive)))){
           findCount ++;
         }
@@ -752,7 +752,7 @@ void ThreadFind::run(){
 }
 
 void ThreadFind::freeGarbage(){
-  foreach(QString k, m_map.keys()){
+  for(QString k: m_map.keys()){
     QStringList sl = m_map.value(k);
     sl.clear();
   }

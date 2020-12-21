@@ -483,13 +483,13 @@ void MainWindowImpl::initializeInstalledPackagesTreeView(){
   QList<QStandardItem*> lIcons, lNames;
 
   if ( m_frozenPkgList->isEmpty() ){
-    foreach( QString s, list ){
+    for( QString s: list ){
       lIcons << new QStandardItem( IconHelper::getIconUnFrozen(), "_UnFrozen" );
       lNames << new QStandardItem( s );
     }
   }
   else{
-    foreach( QString s, list ){
+    for( QString s: list ){
       if ( m_frozenPkgList->indexOf( QRegExp(QRegExp::escape(Package::getBaseName(s))), 0 ) == -1 )
         lIcons << new QStandardItem( IconHelper::getIconUnFrozen(), "_UnFrozen" );
       else

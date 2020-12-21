@@ -37,7 +37,6 @@ private:
   void initialize();
   void initButtonBox();
   void initCheckBoxes();
-  void initComboPrivilege();
   void initFontSlider();
   void initGroupBox();
 

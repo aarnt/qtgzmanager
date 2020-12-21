@@ -47,7 +47,7 @@ QMap<QString, QStringList> PackageController::findFile( const QString& name ){
 
       QStringList slAux;
       const QFileInfoList list = d.entryInfoList();
-      foreach ( QFileInfo fi, list )      {
+      for ( QFileInfo fi: list )      {
         QCoreApplication::processEvents();
 
         if ( !fi.isDir() && fi.isReadable() ){
@@ -100,7 +100,7 @@ QMap<QString, QStringList> PackageController::findFile( const QString& name, con
   foundItems = sim->findItems(name, Qt::MatchRegExp|Qt::MatchRecursive, 0);
   QString fullPath;
 
-  foreach(QStandardItem *item, foundItems){
+  for(QStandardItem *item: foundItems){
     QCoreApplication::processEvents();
 
     if (item->accessibleDescription().contains("directory")) continue;
@@ -226,7 +226,7 @@ QList<QModelIndex> * PackageController::findFileEx( const QString& name, const Q
   }
 
   foundItems = sim->findItems(Package::parseSearchString(name), Qt::MatchRegExp|Qt::MatchRecursive);
-  foreach(QStandardItem *item, foundItems)
+  for(QStandardItem *item: foundItems)
   {
     //if (item->accessibleDescription().contains("directory")) continue;
 

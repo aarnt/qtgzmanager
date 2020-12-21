@@ -71,7 +71,7 @@ QString Package::dumpInstalledPackageList(DumpInstalledPackageListOptions option
   if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) return "";
   QTextStream out(&file);
 
-  foreach (QString fileName, InstalledPkgListSingleton::instance()->getFileList()){
+  for (QString fileName: InstalledPkgListSingleton::instance()->getFileList()){
     if (options == ectn_WITH_MODIFIED_DATE){
       QFileInfo fi( ctn_PACKAGES_DIR + QDir::separator() + fileName );
       QDateTime lastModifiedDate = fi.lastModified();
@@ -441,7 +441,7 @@ Result Package::getStatus( const QString& pkgToVerify ){
   QStringList lPackages2 = InstalledPkgListSingleton::instance()->getFileList().
                            filter( QRegExp(raux.escape( arqBaseName ) ));
 
-  foreach ( QString installedPackage, lPackages2 ){
+  for( QString installedPackage: lPackages2 ){
     if ((pkgToVerify == ".") || (pkgToVerify == "..")) continue;
                
     QString res2 = showRegExp(installedPackage, ctn_ER3);
@@ -661,7 +661,7 @@ SnapshotList Package::processSnapshotOfInstalledPackageList(QString pDumpedFile)
   int cDowngraded=0;
   int cOtherVersion=0;
 
-  foreach (QString pkg, InstalledPkgListSingleton::instance()->getFileList()){
+  for(QString pkg: InstalledPkgListSingleton::instance()->getFileList()){
     if (!dumpedList.contains(getBaseName(pkg))){
       resList.append(pkg.leftJustified(value, ' ') + "[<i>++ " + QObject::tr("installed") + " ++</i>]");
       newPackages.append(pkg);
@@ -678,7 +678,7 @@ SnapshotList Package::processSnapshotOfInstalledPackageList(QString pDumpedFile)
   }
 
   //Print the rest of the list...
-  foreach (QString pkg, dumpedListExt){
+  for(QString pkg: dumpedListExt){
     Result res = Package::getStatus(pkg);
 
     switch(res.getClassification()){    
@@ -731,7 +731,7 @@ void Package::removeTempFiles(){
   sl << ctn_TEMP_OPEN_FILE_PREFIX + "*";
   QFileInfoList il = d.entryInfoList(sl);
 
-  foreach(QFileInfo fi, il){
+  for(QFileInfo fi: il){
     QFile::remove(fi.filePath());
   }
 }
