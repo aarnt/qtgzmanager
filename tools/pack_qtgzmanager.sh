@@ -11,7 +11,7 @@
 #######################################################################
 
 PRGNAM=qtgzmanager
-VERSION=${VERSION:-1.1.1}
+VERSION=${VERSION:-1.1.0}
 
 git clone \
 https://github.com/aarnt/qtgzmanager.git \
