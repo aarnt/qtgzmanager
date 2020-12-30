@@ -4,7 +4,7 @@
 
 **QTGZManager** is a Qt based GUI front end to the Slackware's pkgtool package manager.
 It consists of a lxqt-sudo clone called [qtgzmanager-sudo](https://github.com/aarnt/qtgzmanager/tree/master/sudo) used to gain root privileges and a package browser application used
-to search, install, remove, update and downgrade packages.
+to search, install, remove, upgrade and downgrade packages.
 
 You can read [INSTALL](https://github.com/aarnt/qtgzmanager/blob/master/INSTALL) for compiling instructions.
 
