@@ -36,6 +36,7 @@
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QFutureWatcher>
+#include <QDesktopServices>
 #include <QtConcurrent/QtConcurrentRun>
 
 using namespace QtConcurrent;
@@ -803,6 +804,12 @@ void MainWindowImpl::helpQTGZManager(){
   text->setFocus();
 }
 
+void MainWindowImpl::helpDonate()
+{
+  const QString url="http://sourceforge.net/donate/index.php?group_id=186459";
+  QDesktopServices::openUrl(QUrl(url));
+}
+
 void MainWindowImpl::aboutQTGZManager()
 {
   QString aboutText = "<b>" + StrConstants::getApplicationName() + QLatin1String("</b><br><br>");
@@ -812,7 +819,7 @@ void MainWindowImpl::aboutQTGZManager()
     QStringLiteral("<a href=\"https://qtgzmanager.wordpress.com/\">https://qtgzmanager.wordpress.com</a><br>");
   aboutText += StrConstants::getLicense() + QLatin1String(": ") +
       QStringLiteral("<a href=\"http://www.gnu.org/licenses/gpl-2.0.html\">GPL v2</a><br><br>");
-  aboutText += QStringLiteral("&copy; Alexandre Albuquerque Arnt<br><br>");
+  aboutText += QStringLiteral("&copy; Alexandre A Arnt<br><br>");
 
   QMessageBox::about(this, StrConstants::getAbout(), aboutText);
 }

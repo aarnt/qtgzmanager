@@ -860,6 +860,14 @@
     <string>About</string>
    </property>
   </action>
+  <action name="actionDonate">
+   <property name="text">
+    <string>Donate</string>
+   </property>
+   <property name="toolTip">
+    <string>Donate</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>

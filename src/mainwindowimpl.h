@@ -250,6 +250,7 @@ class MainWindowImpl : public QMainWindow, public Ui::MainWindow
 		void execSystemTrayActivated ( QSystemTrayIcon::ActivationReason );
 
     void helpQTGZManager();
+    void helpDonate();
     void aboutQTGZManager();
 
     void deleteFile();

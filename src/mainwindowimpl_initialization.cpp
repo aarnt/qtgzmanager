@@ -305,6 +305,7 @@ void MainWindowImpl::initializeActions(){
   connect(actionRemove_Directory, SIGNAL(triggered()), this, SLOT(removeDirectory()));
   connect(actionHelp, SIGNAL(triggered()), this, SLOT(helpQTGZManager()));
   connect(actionHelpAbout, &QAction::triggered, this, &MainWindowImpl::aboutQTGZManager);
+  connect(actionDonate, &QAction::triggered, this, &MainWindowImpl::helpDonate);
   connect(actionOpenSnapshot, SIGNAL(triggered()), this, SLOT(openSnapshotOfInstalledPackages()));
   connect(actionOpenThisSnapshot, SIGNAL(triggered()), this, SLOT(openThisSnapshotOfInstalledPackages()));
   connect(actionSnapshotInstalledPackages, SIGNAL(triggered()), this, SLOT(takeSnapshotOfInstalledPackages()));
@@ -646,8 +647,10 @@ void MainWindowImpl::initializeMenuBar(){
   menuView->addAction(actionMaximizeLowerView);
   menuOptions->addAction(actionSetup);
   menuHelp->addAction(actionHelp);
+  menuHelp->addSeparator();
+  menuHelp->addAction(actionDonate);
   menuHelp->addAction(actionHelpAbout);
-  menubar->setVisible( true );
+  menubar->setVisible(true);
   menubar->setStyleSheet(" QMenuBar { font: " + QString::number(SettingsManager::getMenuFontSize()) + "px; }");
 
   setStyleSheet("QMenu { font: " + QString::number(SettingsManager::getMenuFontSize()) + "px; }");
