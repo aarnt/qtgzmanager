@@ -670,7 +670,7 @@ SnapshotList Package::processSnapshotOfInstalledPackageList(QString pDumpedFile)
     //This package is already installed. But maybe it's been reinstalled...
     else if (dumpedListExt.contains(pkg)){
       QString datetime = dumpedList.value(getBaseName(pkg));
-      if (QDateTime::fromString(datetime, "dd/MM/yyyy hh:mm:ss") < _getModificationDate(pkg)){
+      if (QDateTime::fromString(datetime, "dd/MM/yyyy hh:mm:ss") <= _getModificationDate(pkg)){
         resList.append(pkg.leftJustified(value, ' ') + " [ " + QObject::tr("reinstalled") + " ]");
         cReinstalled++;
       }

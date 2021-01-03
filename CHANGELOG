@@ -3,3 +3,4 @@
   Added an About dialog.
   Migration from SourceForge's SVN to Github's Git.
   BugFix: filter line edits cause selection errors.
+  BugFix: saved pkg lists may omit some pkgs when opened in QTGZManager.
