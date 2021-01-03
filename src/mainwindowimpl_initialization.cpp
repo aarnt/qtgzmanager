@@ -200,8 +200,9 @@ void MainWindowImpl::initializeActions(){
   actionDelete_ActionFile->setIcon(QIcon(":/resources/images/trashcan.png"));
   actionCreate_Directory->setIcon(QIcon(":/resources/images/newFolder.png"));
   actionRemove_Directory->setIcon(QIcon(":/resources/images/trashcan.png"));
-  actionAbout_QTGZManager->setShortcut( QKeySequence(Qt::Key_F1) );
-  actionAbout_QTGZManager->setToolTip(tr("About..."));
+  actionHelp->setShortcut( QKeySequence(Qt::Key_F1) );
+  actionHelp->setToolTip(tr("Help"));
+  actionHelpAbout->setToolTip(StrConstants::getAbout());
   actionSnapshotInstalledPackages->setIcon(QIcon(":/resources/images/camera.png"));
   actionPackageContent->setIcon(QIcon(":/resources/images/content.png"));
   actionPackageInfo->setIcon(QIcon(":/resources/images/info.png"));
@@ -302,7 +303,8 @@ void MainWindowImpl::initializeActions(){
   connect(actionDelete_All_ActionFiles, SIGNAL(triggered()), this, SLOT(deleteAllActionFiles()));
   connect(actionCreate_Directory, SIGNAL(triggered()), this, SLOT(createDirectory()));
   connect(actionRemove_Directory, SIGNAL(triggered()), this, SLOT(removeDirectory()));
-  connect(actionAbout_QTGZManager, SIGNAL(triggered()), this, SLOT(aboutQTGZManager()));
+  connect(actionHelp, SIGNAL(triggered()), this, SLOT(helpQTGZManager()));
+  connect(actionHelpAbout, &QAction::triggered, this, &MainWindowImpl::aboutQTGZManager);
   connect(actionOpenSnapshot, SIGNAL(triggered()), this, SLOT(openSnapshotOfInstalledPackages()));
   connect(actionOpenThisSnapshot, SIGNAL(triggered()), this, SLOT(openThisSnapshotOfInstalledPackages()));
   connect(actionSnapshotInstalledPackages, SIGNAL(triggered()), this, SLOT(takeSnapshotOfInstalledPackages()));
@@ -643,7 +645,8 @@ void MainWindowImpl::initializeMenuBar(){
   menuView->addAction(actionMinimizeLowerView);
   menuView->addAction(actionMaximizeLowerView);
   menuOptions->addAction(actionSetup);
-  menuHelp->addAction(actionAbout_QTGZManager);
+  menuHelp->addAction(actionHelp);
+  menuHelp->addAction(actionHelpAbout);
   menubar->setVisible( true );
   menubar->setStyleSheet(" QMenuBar { font: " + QString::number(SettingsManager::getMenuFontSize()) + "px; }");
 
@@ -677,14 +680,14 @@ void MainWindowImpl::initializeSystemTrayIcon(){
   m_systemTrayIcon->show();
 
   m_systemTrayIconMenu = new QMenu( this );
-  m_actionAbout = new QAction( this );
-  m_actionAbout->setText( tr("About..."));
+  m_actionHelp = new QAction( this );
+  m_actionHelp->setText( tr("Help"));
   m_systemTrayIconMenu->setStyleSheet(" QMenu { font: " + QString::number(SettingsManager::getMenuFontSize()) + "px; }");
-  m_systemTrayIconMenu->addAction( m_actionAbout );
+  m_systemTrayIconMenu->addAction( m_actionHelp );
   m_systemTrayIconMenu->addAction( actionExit );
   m_systemTrayIcon->setContextMenu( m_systemTrayIconMenu );
 
-  connect( m_actionAbout, SIGNAL(triggered()), this, SLOT(aboutQTGZManager()));
+  connect( m_actionHelp, SIGNAL(triggered()), this, SLOT(helpQTGZManager()));
   connect ( m_systemTrayIcon , SIGNAL( activated( QSystemTrayIcon::ActivationReason ) ),
             this, SLOT( execSystemTrayActivated ( QSystemTrayIcon::ActivationReason ) ) );
 }

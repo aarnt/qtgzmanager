@@ -1,4 +1,5 @@
 1.1.0 (dev)
   Ported code to Qt5 libs.
-  Migration from SF/SVN to Github's Git.
+  Added an About dialog.
+  Migration from SourceForge's SVN to Github's Git.
   BugFix: filter line edits cause selection errors.

@@ -615,13 +615,16 @@
     <string>Remove all files from Action</string>
    </property>
   </action>
-  <action name="actionAbout_QTGZManager">
+  <action name="actionHelp">
    <property name="icon">
     <iconset>
      <normaloff>../resources/JTGZManager.png</normaloff>../resources/JTGZManager.png</iconset>
    </property>
    <property name="text">
-    <string>About QTGZManager...</string>
+    <string>Help</string>
+   </property>
+   <property name="toolTip">
+    <string>Help</string>
    </property>
   </action>
   <action name="actionReinstall_package">
@@ -847,6 +850,14 @@
    </property>
    <property name="text">
     <string>Paste</string>
+   </property>
+  </action>
+  <action name="actionHelpAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+   <property name="toolTip">
+    <string>About</string>
    </property>
   </action>
  </widget>

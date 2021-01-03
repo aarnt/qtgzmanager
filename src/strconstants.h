@@ -33,7 +33,11 @@
 class StrConstants{
 public:
   static QString getApplicationName(){
-    return "QTGZManager 1.1.0 (dev)";
+    return "QTGZManager";
+  }
+  
+  static QString getApplicationVersion(){
+    return "1.1.0 (dev)";
   }
 
   static QString getApplicationCliHelp(){
@@ -43,6 +47,26 @@ public:
         "-style <Qt4-style>: " + QObject::tr("use a different Qt4 style (ex: -style gtk).") + "\n" +
         "-no-patch-download: " + QObject::tr("disable patch download from Slackware mirror.") +"\n";
     return str;
+  }
+
+  static QString getAbout(){
+    return QObject::tr("About");
+  }
+
+  static QString getURL(){
+    return QObject::tr("URL");
+  }
+
+  static QString getVersion(){
+    return QObject::tr("Version");
+  }
+
+  static QString getQtVersion(){
+    return "Qt " + QString(QT_VERSION_STR);
+  }
+
+  static QString getLicense(){
+    return QObject::tr("License");
   }
 
   static QString getAttention(){

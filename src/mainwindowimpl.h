@@ -105,7 +105,7 @@ class MainWindowImpl : public QMainWindow, public Ui::MainWindow
     QTabBar *m_tabBar;
     QIcon *m_appIcon;
 
-    QAction *m_actionAbout;
+    QAction *m_actionHelp;
     QAction *m_actionIconifyOnStart;
     SimpleStatusBar *m_statusbar;
     QSystemTrayIcon *m_systemTrayIcon;
@@ -249,7 +249,9 @@ class MainWindowImpl : public QMainWindow, public Ui::MainWindow
 		void execContextMenuPkgFileList(QPoint);
 		void execSystemTrayActivated ( QSystemTrayIcon::ActivationReason );
 
-	 	void aboutQTGZManager();
+    void helpQTGZManager();
+    void aboutQTGZManager();
+
     void deleteFile();
 	 	void deleteActionFile();
 	 	void deleteAllActionFiles();

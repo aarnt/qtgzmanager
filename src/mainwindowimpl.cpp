@@ -741,7 +741,7 @@ void MainWindowImpl::refreshInstalledPackageTreeView(){
 	reapplyInstalledPackagesFilter();
 }
 
-void MainWindowImpl::aboutQTGZManager(){	
+void MainWindowImpl::helpQTGZManager(){
   if (this->isHidden()) show();
   conditionalGotoNormalView();
 
@@ -801,6 +801,20 @@ void MainWindowImpl::aboutQTGZManager(){
   text->show();
   twTODO->setCurrentIndex(tindex);
   text->setFocus();
+}
+
+void MainWindowImpl::aboutQTGZManager()
+{
+  QString aboutText = "<b>" + StrConstants::getApplicationName() + QLatin1String("</b><br><br>");
+  aboutText += StrConstants::getVersion() + QLatin1String(": ") + StrConstants::getApplicationVersion() +
+      QLatin1String(" - ") + StrConstants::getQtVersion() + QLatin1String("<br>");
+  aboutText += StrConstants::getURL() + QLatin1String(": ") +
+    QStringLiteral("<a href=\"https://qtgzmanager.wordpress.com/\">https://qtgzmanager.wordpress.com</a><br>");
+  aboutText += StrConstants::getLicense() + QLatin1String(": ") +
+      QStringLiteral("<a href=\"http://www.gnu.org/licenses/gpl-2.0.html\">GPL v2</a><br><br>");
+  aboutText += QStringLiteral("&copy; Alexandre Albuquerque Arnt<br><br>");
+
+  QMessageBox::about(this, StrConstants::getAbout(), aboutText);
 }
 
 void MainWindowImpl::openFileOrDirectory(const QModelIndex& mi){
