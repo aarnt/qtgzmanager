@@ -522,12 +522,21 @@ void UnixCommand::executePackageActions( const QStringList& commandList ){
 
   //QString command = WMHelper::getSUCommand() + " " + ftemp->fileName();
   QStringList params;
-  params << ctn_OCTOPISUDO_PARAMS;
-  params << "/bin/sh";
-  params << "-c";
-  params << ftemp->fileName();
+  QString suCommand = WMHelper::getSUCommand();
+  if (suCommand == ctn_OCTOPISUDO)
+  {
+    params << ctn_OCTOPISUDO_PARAMS;
+    params << "/bin/sh";
+    params << "-c";
+  }
+  else if (suCommand == ctn_ROOT_SH)
+  {
+    suCommand = "/bin/sh";
+    params << "-c";
+  }
 
-  m_process->start(WMHelper::getSUCommand(), params);
+  params << ftemp->fileName();
+  m_process->start(suCommand, params);
 }
 
 void UnixCommand::transformTGZinLZM( const QStringList& commandList, LZMCommand commandUsed ){

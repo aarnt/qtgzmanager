@@ -473,6 +473,7 @@ QString MainWindowImpl::_removeStringBugs(const QString str){
   newStr.remove(QRegularExpression("^QDBusConnection.*$"));
   newStr.remove(QRegularExpression("kdeinit4.*$"));
   newStr.remove(QRegularExpression("glibtop\\(c=.*$"));
+  newStr.remove(QRegularExpression(": QXcbConnection:.*$"));
 
   //Removing Style error messages
   newStr.remove("QGtkstyle was unable to detect the current gtk+ theme.",
