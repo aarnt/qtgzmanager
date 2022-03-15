@@ -383,7 +383,7 @@ void MainWindowImpl::initializeDirTreeView(){
 
   tvDir->scrollTo(index, QAbstractItemView::PositionAtCenter);
   tvDir->setCurrentIndex(index);
-  tvDir->setStyleSheet( StrConstants::getTreeViewCSS(SettingsManager::getDirectoryFontSize()) );
+  //tvDir->setStyleSheet( StrConstants::getTreeViewCSS(SettingsManager::getDirectoryFontSize()) );
 
   static bool onlyOnce = false;
 
@@ -441,7 +441,7 @@ void MainWindowImpl::initializePackageTreeView(){
   tvPackage->header()->setSectionsMovable(false);
   tvPackage->header()->setDefaultAlignment( Qt::AlignCenter );
   tvPackage->header()->setSectionResizeMode( QHeaderView::Fixed );
-  tvPackage->setStyleSheet(StrConstants::getTreeViewCSS(SettingsManager::getPackagesInDirFontSize()));
+  //tvPackage->setStyleSheet(StrConstants::getTreeViewCSS(SettingsManager::getPackagesInDirFontSize()));
 
   //Prepare it for drag operations
   tvPackage->setSelectionMode(QAbstractItemView::ExtendedSelection);
@@ -489,16 +489,29 @@ void MainWindowImpl::initializeInstalledPackagesTreeView(){
 
   if ( m_frozenPkgList->isEmpty() ){
     for( QString s: list ){
-      lIcons << new QStandardItem( IconHelper::getIconUnFrozen(), "_UnFrozen" );
+      QStandardItem *i = new QStandardItem( IconHelper::getIconUnFrozen(), "N");
+      lIcons << i;
+      //lIcons << new QStandardItem(IconHelper::getIconUnFrozen(), "_UnFrozen" );
+
       lNames << new QStandardItem( s );
     }
   }
   else{
     for( QString s: list ){
       if ( m_frozenPkgList->indexOf( QRegExp(QRegExp::escape(Package::getBaseName(s))), 0 ) == -1 )
-        lIcons << new QStandardItem( IconHelper::getIconUnFrozen(), "_UnFrozen" );
+      {
+        QStandardItem *i = new QStandardItem( IconHelper::getIconUnFrozen(), "N");
+        lIcons << i;
+
+        //lIcons << new QStandardItem( IconHelper::getIconUnFrozen(), "_UnFrozen" );
+      }
       else
-        lIcons << new QStandardItem( IconHelper::getIconFrozen(), "_Frozen" );
+      {
+        QStandardItem *i = new QStandardItem( IconHelper::getIconFrozen(), "F");
+        lIcons << i;
+
+        //lIcons << new QStandardItem( IconHelper::getIconFrozen(), "_Frozen" );
+      }
 
       lNames << new QStandardItem( s );
     }
@@ -517,23 +530,26 @@ void MainWindowImpl::initializeInstalledPackagesTreeView(){
   if (SettingsManager::instance()->getShowPackageTooltip())
     tvInstalledPackages->setItemDelegate(new tvPackagesItemDelegate(tvInstalledPackages));
 
-  tvInstalledPackages->setStyleSheet(StrConstants::getTreeViewCSS(SettingsManager::getInstalledPackagesFontSize()));
+  //tvInstalledPackages->setStyleSheet(StrConstants::getTreeViewCSS(SettingsManager::getInstalledPackagesFontSize()));
   tvInstalledPackages->setEditTriggers(QAbstractItemView::NoEditTriggers);
   tvInstalledPackages->setSelectionMode(QAbstractItemView::ExtendedSelection);
   tvInstalledPackages->setSortingEnabled( true );
-  tvInstalledPackages->sortByColumn( 1, Qt::AscendingOrder);
+  //tvInstalledPackages->sortByColumn( 1, Qt::AscendingOrder);
   tvInstalledPackages->setIndentation( 0 );
   tvInstalledPackages->setAllColumnsShowFocus( true );
   tvInstalledPackages->header()->setSortIndicatorShown(true);
-  tvInstalledPackages->header()->setSectionsClickable(true);
+  tvInstalledPackages->header()->setSectionsClickable(false);
   tvInstalledPackages->header()->setSectionsMovable(false);
   tvInstalledPackages->setColumnWidth(0, 24);
   tvInstalledPackages->setColumnWidth(1, 50);
-  tvInstalledPackages->header()->setSortIndicator(
-        m_InstalledPackageListOrderedCol, m_InstalledPackageListSortOrder );
-  tvInstalledPackages->sortByColumn( m_InstalledPackageListOrderedCol, m_InstalledPackageListSortOrder );
+  //tvInstalledPackages->header()->setSortIndicator(
+  //      m_InstalledPackageListOrderedCol, m_InstalledPackageListSortOrder );
+  //tvInstalledPackages->sortByColumn( m_InstalledPackageListOrderedCol, m_InstalledPackageListSortOrder );
+  tvInstalledPackages->header()->setSortIndicator(1, Qt::AscendingOrder); //m_InstalledPackageListSortOrder );
+  tvInstalledPackages->sortByColumn( 1, Qt::AscendingOrder); //m_InstalledPackageListSortOrder );
   tvInstalledPackages->header()->setDefaultAlignment( Qt::AlignCenter );
   tvInstalledPackages->header()->setSectionResizeMode( QHeaderView::Fixed );
+  tvInstalledPackages->setUniformRowHeights(true);
 
   static bool onlyOnce=true;
   if (onlyOnce){
@@ -567,7 +583,7 @@ void MainWindowImpl::initializeTodoTreeView(){
   tvTODO->header()->setSectionsClickable(false);
   tvTODO->header()->setSectionsMovable(false);
   tvTODO->header()->setDefaultAlignment( Qt::AlignCenter );
-  tvTODO->setStyleSheet( StrConstants::getTreeViewCSS(SettingsManager::getTodoFontSize()) );
+  //tvTODO->setStyleSheet( StrConstants::getTreeViewCSS(SettingsManager::getTodoFontSize()) );
 
   textEdit->setStyleSheet("QTextEdit::font { font-family:\"Verdana\";"
                                      " font-size: " + QString::number(SettingsManager::getTodoFontSize()) + "px;}" );

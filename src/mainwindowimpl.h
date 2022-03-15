@@ -339,8 +339,6 @@ class MainWindowImpl : public QMainWindow, public Ui::MainWindow
     void fileSystemWatcher_packagesDirectoryChanged ( const QString &);
     void fileSystemWatcher_installedPackagesDirectoryChanged ( const QString &);
 
-		bool close();
-
     void showPackagesInDirectory(bool preserveSelected = true);
 		void refreshTreeViews();
 		void changeDir();
@@ -407,6 +405,7 @@ class MainWindowImpl : public QMainWindow, public Ui::MainWindow
   public slots:
 
     void show();
+    bool close();
     void selectInstalledPackage();
     void toggleToolBarStatus();    
     void directoryRenamed(QString path, QString oldName, QString newName);

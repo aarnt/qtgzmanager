@@ -89,7 +89,9 @@ void SetupDialog::initButtonBox(){
 }
 
 void SetupDialog::initCheckBoxes(){
-  cbCloseButtonHidesApp->setChecked(SettingsManager::getWindowCloseHidesApp());
+  //cbCloseButtonHidesApp->setChecked(SettingsManager::getWindowCloseHidesApp());
+  cbCloseButtonHidesApp->setVisible(false);
+
   cbShowPackageTooltip->setToolTip(StrConstants::getNeedsAppRestart());
   cbShowPackageTooltip->setChecked(SettingsManager::getShowPackageTooltip());
   cbShowToolbar->setChecked(SettingsManager::getShowToolBar());
@@ -274,7 +276,7 @@ void SetupDialog::restoreDefaults(QAbstractButton* button){
                                     tr("Do you really want to restore all default values?"),
                                     QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
     if (rep == QMessageBox::Yes){
-      cbCloseButtonHidesApp->setChecked(false);
+      //cbCloseButtonHidesApp->setChecked(false);
       cbShowToolbar->setChecked(true);
       cbShowPackageTooltip->setChecked(true);
       cbShowStatusBar->setChecked(true);
@@ -316,10 +318,10 @@ void SetupDialog::accept(){
   if(twMirror->currentItem())
     selectedMirror = twMirror->item(twMirror->row(twMirror->currentItem()), 1)->text();
 
-  if (SettingsManager::getWindowCloseHidesApp() != cbCloseButtonHidesApp->isChecked()){
+  /*if (SettingsManager::getWindowCloseHidesApp() != cbCloseButtonHidesApp->isChecked()){
     SettingsManager::setWindowCloseHidesApp(cbCloseButtonHidesApp->isChecked());
     qApp->setQuitOnLastWindowClosed(!cbCloseButtonHidesApp->isChecked());
-  }
+  }*/
 
   if (SettingsManager::getShowToolBar() != cbShowToolbar->isChecked())
     SettingsManager::setShowToolBar(cbShowToolbar->isChecked());

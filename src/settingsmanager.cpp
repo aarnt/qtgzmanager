@@ -31,6 +31,7 @@
 #include <QVariant>
 #include <QSettings>
 #include <QDir>
+#include <QDebug>
 
 SettingsManager* SettingsManager::m_pinstance = 0;
 
@@ -123,19 +124,20 @@ int SettingsManager::getHighlightedSearchItems(){
 }
 
 bool SettingsManager::getUsePkgTools(){
-  return (instance()->getSYSsettings()->value( ctn_KEY_USE_PKGTOOLS, true).toInt() == 1);
+  return (instance()->getSYSsettings()->value( ctn_KEY_USE_PKGTOOLS, true).toBool());
 }
 
 bool SettingsManager::getUseSilentActionOutput(){
-  return (instance()->getSYSsettings()->value( ctn_KEY_USE_SILENT_ACTION_OUTPUT, true).toInt() == 1);
+  return (instance()->getSYSsettings()->value( ctn_KEY_USE_SILENT_ACTION_OUTPUT, true).toBool());
 }
 
 bool SettingsManager::getAutomaticCheckUpdates(){
-  return (instance()->getSYSsettings()->value( ctn_KEY_AUTOMATIC_CHECK_UPDATES, true).toInt() == 1);
+  return (instance()->getSYSsettings()->value( ctn_KEY_AUTOMATIC_CHECK_UPDATES, true).toBool());
 }
 
 bool SettingsManager::getWindowCloseHidesApp(){
-  return (instance()->getSYSsettings()->value( ctn_KEY_WINDOW_CLOSE_HIDES_APP, false).toInt() == 1);
+  return false;
+  //return (instance()->getSYSsettings()->value( ctn_KEY_WINDOW_CLOSE_HIDES_APP, false).toBool());
 }
 
 int SettingsManager::getFontSizeFactor(){
@@ -171,7 +173,8 @@ void SettingsManager::setFourPanelOrganizing(int newValue){
   instance()->getSYSsettings()->sync();
 }
 
-void SettingsManager::setFrozenPkgList(QStringList newValue){
+void SettingsManager::setFrozenPkgList(QStringList newValue){  
+  //qDebug() << "Saving the list: " << newValue;
   instance()->getSYSsettings()->setValue( ctn_KEY_FROZEN_PACKAGES_LIST,
                                           QVariant( static_cast<QStringList>(newValue)) );
   instance()->getSYSsettings()->sync();

@@ -35,6 +35,7 @@
 
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QDebug>
 
 QFile* UnixCommand::m_temporaryFile;
 
@@ -753,19 +754,42 @@ void MainWindowImpl::insertReinstallPackageAction(){
 }
 
 void MainWindowImpl::freezePackage(){
-  int bkSize = m_frozenPkgList->count();
-  for(QModelIndex item: tvInstalledPackages->selectionModel()->selectedIndexes()){
-    if ( item.column() == ctn_PACKAGE_ICON ){
-      QStandardItem *si = new QStandardItem( IconHelper::getIconFrozen(), "Frozen" );
+  /*for(QModelIndex item: tvInstalledPackages->selectionModel()->selectedIndexes())
+  {
+    if ( item.column() == ctn_PACKAGE_NAME )
+    {
       QModelIndex mi = m_proxyModelInstalledPackages->mapToSource( item );
-      m_modelInstalledPackages->setItem(mi.row(), mi.column(), si);
+      QStandardItem *si = m_modelInstalledPackages->item(mi.row(), mi.column());
+      si->setText(si->text() + "_MUDEI!");
+      qDebug() << "Selected package: " << si->text();
     }
-    else if ( item.column() == ctn_PACKAGE_NAME ){
-      *m_frozenPkgList << Package::getBaseName( m_proxyModelInstalledPackages->data(item).toString());
+  }*/
+
+  int bkSize = m_frozenPkgList->count();
+  for(QModelIndex item: tvInstalledPackages->selectionModel()->selectedIndexes())
+  {
+    if ( item.column() == ctn_PACKAGE_ICON )
+    {
+      QModelIndex mi = m_proxyModelInstalledPackages->mapToSource( item );
+      QStandardItem *si = m_modelInstalledPackages->item(mi.row(), mi.column());
+      si->setIcon(IconHelper::getIconFrozen());
+      si->setText( "F" );
+    }
+    else if ( item.column() == ctn_PACKAGE_NAME )
+    {
+      qDebug() << "CHEGUEI!";
+      QModelIndex mi2 = m_proxyModelInstalledPackages->mapToSource( item );
+      QStandardItem *si2 = m_modelInstalledPackages->item(mi2.row(), mi2.column());
+      QString pkg = si2->text();
+      qDebug() << "Selected package: " << si2->text();
+      pkg = Package::getBaseName(pkg);
+
+      *m_frozenPkgList << pkg;
+      //*m_frozenPkgList << Package::getBaseName( m_proxyModelInstalledPackages->data(item).toString());
     }
   }
 
-  refreshInstalledPackageTreeView();
+  //refreshInstalledPackageTreeView();
 
   //Now we must rebuild the list of frozen packages in order to save it into the QSettings.
   m_frozenPkgList->save();
@@ -774,18 +798,26 @@ void MainWindowImpl::freezePackage(){
 
 void MainWindowImpl::unfreezePackage(){
   int bkSize = m_frozenPkgList->count();
-  for(QModelIndex item: tvInstalledPackages->selectionModel()->selectedIndexes()){
+  for(QModelIndex item: tvInstalledPackages->selectionModel()->selectedIndexes())
+  {
     if ( item.column() == ctn_PACKAGE_ICON ){
-      QStandardItem *si = new QStandardItem( IconHelper::getIconUnFrozen(), "UnFrozen" );
       QModelIndex mi = m_proxyModelInstalledPackages->mapToSource( item );
-      m_modelInstalledPackages->setItem(mi.row(), mi.column(), si);
+      QStandardItem *si = m_modelInstalledPackages->item(mi.row(), mi.column());
+      si->setIcon(IconHelper::getIconUnFrozen());
+      si->setText("N");
     }
     else if ( item.column() == ctn_PACKAGE_NAME ){
-      m_frozenPkgList->removeAll( Package::getBaseName(m_proxyModelInstalledPackages->data(item).toString() ));
+      //qDebug() << "CHEGUEI!";
+      QModelIndex mi2 = m_proxyModelInstalledPackages->mapToSource( item );
+      QStandardItem *si2 = m_modelInstalledPackages->item(mi2.row(), mi2.column());
+      QString pkg = si2->text();
+      pkg = Package::getBaseName(pkg);
+      //qDebug() << "Package to be removed " << pkg;
+      m_frozenPkgList->removeAll(pkg);
     }
   }
 
-  refreshInstalledPackageTreeView();
+  //refreshInstalledPackageTreeView();
 
   //Now we must rebuild the list of frozen packages in order to save it to the QSettings.
   m_frozenPkgList->save();

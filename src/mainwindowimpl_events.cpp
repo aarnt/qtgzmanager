@@ -534,7 +534,8 @@ void MainWindowImpl::pastePackages(){
 void MainWindowImpl::closeEvent(QCloseEvent *event){
   m_savedGeometry = this->saveGeometry();
 
-  if ((m_reallyWannaClose || !SettingsManager::getWindowCloseHidesApp())
+  m_reallyWannaClose = !SettingsManager::getWindowCloseHidesApp();
+  if ((m_reallyWannaClose) // || !SettingsManager::getWindowCloseHidesApp())
       && (hasPendingActions())){
     int res = QMessageBox::question(this, tr("Confirmation"),
                                     tr("There are actions waiting for execution!") + "\n" +
@@ -551,11 +552,15 @@ void MainWindowImpl::closeEvent(QCloseEvent *event){
   }
   else if(m_reallyWannaClose)
     event->accept();
+  else
+    event->ignore();
 
   if (event->isAccepted()){
     QByteArray windowSize=saveGeometry();
     SettingsManager::setWindowSize(windowSize);
+    close();
   }
+  else hide();
 
-  m_reallyWannaClose = false;
+  //m_reallyWannaClose = false;
 }
