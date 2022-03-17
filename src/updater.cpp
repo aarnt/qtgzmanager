@@ -223,7 +223,17 @@ QString Updater::getSlackVersion(QString architecture){
     QString data = slackVersionFile.readAll();
     slackVersionFile.close();
 
-    if (data.indexOf(ctn_SLACKWARE_14_2_VERSION_NAME) != -1){
+    if (data.indexOf(ctn_SLACKWARE_15_0_VERSION_NAME) != -1){
+      if (architecture.indexOf(QRegExp(ctn_ARCH32)) != -1)
+        result = ctn_SLACKWARE_15_0;
+      else if (architecture.indexOf(QRegExp(ctn_ARCH64)) != -1)
+        result = ctn_SLACKWARE64_15_0;
+      else if (architecture.contains(ctn_ARCHARM, Qt::CaseInsensitive))
+        result = ctn_ARMEDSLACK_15_0;
+      else result = ctn_UNKNOWN_SLACKWARE_VERSION;
+    }
+
+    else if (data.indexOf(ctn_SLACKWARE_14_2_VERSION_NAME) != -1){
       if (architecture.indexOf(QRegExp(ctn_ARCH32)) != -1)
         result = ctn_SLACKWARE_14_2;
       else if (architecture.indexOf(QRegExp(ctn_ARCH64)) != -1)

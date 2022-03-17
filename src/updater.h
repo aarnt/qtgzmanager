@@ -31,6 +31,7 @@
 const int ctn_SIZE_OF_CHECKSUM_HASH = 32;
 const QString ctn_SLACKWARE_VERSION_FILE = "/etc/slackware-version";
 
+const QString ctn_SLACKWARE_15_0_VERSION_NAME  = "Slackware 15.0";
 const QString ctn_SLACKWARE_14_2_VERSION_NAME  = "Slackware 14.2";
 const QString ctn_SLACKWARE_14_1_VERSION_NAME  = "Slackware 14.1";
 const QString ctn_SLACKWARE_14_0_VERSION_NAME  = "Slackware 14.0";
@@ -51,6 +52,7 @@ const QString ctn_PATCHES_DIR_PREFIX = "patches_";
 const QString ctn_UNKNOWN_SLACKWARE_VERSION = "UNKNOWN_VERSION";
 
 //Slackware 64 bit versions supported
+const QString ctn_SLACKWARE64_15_0  = "slackware64-15.0";
 const QString ctn_SLACKWARE64_14_2  = "slackware64-14.2";
 const QString ctn_SLACKWARE64_14_1  = "slackware64-14.1";
 const QString ctn_SLACKWARE64_14_0  = "slackware64-14.0";
@@ -59,6 +61,7 @@ const QString ctn_SLACKWARE64_13_1  = "slackware64-13.1";
 const QString ctn_SLACKWARE64_13_0  = "slackware64-13.0";
 
 //Slackware 32 bit versions supported
+const QString ctn_SLACKWARE_15_0  = "slackware-15.0";
 const QString ctn_SLACKWARE_14_2  = "slackware-14.2";
 const QString ctn_SLACKWARE_14_1  = "slackware-14.1";
 const QString ctn_SLACKWARE_14_0  = "slackware-14.0";
@@ -70,6 +73,7 @@ const QString ctn_SLACKWARE_12_1  = "slackware-12.1";
 const QString ctn_SLACKWARE_12_0  = "slackware-12.0";
 
 //ArmedSlack versions supported
+const QString ctn_ARMEDSLACK_15_0  = "slackwarearm-15.0";
 const QString ctn_ARMEDSLACK_14_2  = "slackwarearm-14.2";
 const QString ctn_ARMEDSLACK_14_1  = "slackwarearm-14.1";
 const QString ctn_ARMEDSLACK_14_0  = "slackwarearm-14.0";
@@ -84,7 +88,8 @@ const QString ctn_CHECKSUMS_FILE = "CHECKSUMS.md5";
 const QString ctn_CHECKSUMS_SIGNATURES_FILE = "CHECKSUMS.md5.asc";
 
 const QString ctn_SLACKWARE_MIRROR_USA = "http://mirrors.slackware.com/slackware/";
-const QString ctn_SLACKWAREARM_MIRROR  = "ftp://ftp.slackware.org.uk/slackwarearm/";
+const QString ctn_SLACKWAREARM_MIRROR  = "http://slackware.uk/slackwarearm/";
+//const QString ctn_SLACKWAREARM_MIRROR  = "ftp://ftp.slackware.org.uk/slackwarearm/";
 
 const QString ctn_LIST_GPG_SLACKWARE_KEY     = "Key fingerprint = EC56 49DA 401E 22AB FA67  36EF 6A44 63C0 4010 2233";
 const QString ctn_LIST_GPG_SLACKWARE_ARM_KEY = "Key fingerprint = 1552 7425 B232 9AC5 F11E  4824 29E6 F38E 4567 23FD";

@@ -340,11 +340,11 @@ void MainWindowImpl::executePackageActions(){
     out << UnixCommand::getPkgReinstallCommand() << " " << fi.fileName() << getStrSilentOutput() << "\n";
   }
 
-  //Let's check if a kernel pkg is included in the list
-  if (out.indexOf("kernel-") != -1)
+  //Let's check if a kernel pkg is included in the list 
+  if (out.indexOf(QRegularExpression("kernel-(huge|generic).*")) != -1)
   {
     //If so, we include a "lilo" command
-    out << "lilo" << "\n";
+    out << "/sbin/lilo" << "\n";
   }
 
   textEdit->clear();
@@ -467,14 +467,16 @@ QString MainWindowImpl::_removeStringBugs(const QString str){
   QString newStr(str);
 
   //Removing the annoying kdesu 4.x "error" messages
-  newStr.remove(QRegularExpression("qt.qpa.xcb+"));
+  newStr.remove(QRegularExpression("^qt.qpa.xcb.*$"));
   newStr.remove(QRegularExpression("^kdesu\\(.*$"));
   newStr.remove(QRegularExpression("^kbuildsycoca.*$"));
   newStr.remove(QRegularExpression("^Connecting to deprecated signal.*$"));
   newStr.remove(QRegularExpression("^QDBusConnection.*$"));
   newStr.remove(QRegularExpression("kdeinit4.*$"));
   newStr.remove(QRegularExpression("glibtop\\(c=.*$"));
-  newStr.remove(QRegularExpression(": QXcbConnection:.*$"));
+  //newStr.remove(QRegularExpression(": QXcbConnection:.*$"));
+
+  //: QXcbConnection: XCB error: 3 (BadWindow), sequence: 560, resource id: 18874873, major code: 40 (TranslateCoords), minor code: 0
 
   //Removing Style error messages
   newStr.remove("QGtkstyle was unable to detect the current gtk+ theme.",

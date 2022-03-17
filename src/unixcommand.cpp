@@ -67,7 +67,10 @@ QString UnixCommand::runCurlCommand(const QString& commandToRun){
 #endif
 
   QStringList params;
-  proc.start(commandToRun, params);
+  params << "-c";
+  params << commandToRun;
+  proc.start("/bin/sh", params);
+  //proc.start(commandToRun, params);
   proc.waitForStarted(-1);
   proc.waitForFinished(-1);
 
@@ -250,10 +253,9 @@ bool UnixCommand::isAuthenticPackage(const QString& packageName){
 
   QStringList params;
   //gpgProcess.start("gpg --status-fd 1 --verify " + packageName + ctn_GPG_SIGNATURE_EXTENSION);
-  params << "--status-fd 1";
-  params << "--verify";
-  params << packageName + ctn_GPG_SIGNATURE_EXTENSION;
-  gpgProcess.start("gpg", params);
+  params << "-c";
+  params << "gpg --status-fd 1 --verify " + packageName + ctn_GPG_SIGNATURE_EXTENSION;
+  gpgProcess.start("/bin/sh", params);
   gpgProcess.waitForFinished(-1);
 
   int exitCode = gpgProcess.exitCode();
