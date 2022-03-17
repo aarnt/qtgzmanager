@@ -344,6 +344,7 @@ void MainWindowImpl::executePackageActions(){
   if (out.indexOf(QRegularExpression("kernel-(huge|generic).*")) != -1)
   {
     //If so, we include a "lilo" command
+    out << "echo -e " << StrConstants::getExecutingCommand() << " \\\x27/sbin/lilo\\\x27...\n";
     out << "/sbin/lilo" << "\n";
   }
 
