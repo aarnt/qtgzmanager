@@ -117,7 +117,7 @@ void SimpleStatusBar::paintEvent(QPaintEvent *)
                          item->w->width() + 4, item->w->height() + 2);
 				opt.palette = palette();
 				opt.state = QStyle::State_None;
-				style()->drawPrimitive(QStyle::PE_FrameStatusBar, &opt, &p, item->w);
+        style()->drawPrimitive(QStyle::PE_FrameStatusBarItem, &opt, &p, item->w);
 			}
 	}
 	if (haveMessage) {
