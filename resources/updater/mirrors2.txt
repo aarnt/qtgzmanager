@@ -9,6 +9,7 @@ bg, http://slackware.telecoms.bg/slackware/
 bg, http://x.ultranet.biz/slackware/ 
 br, http://linorg.usp.br/slackware/ 
 br, http://mirror.ic.ufmt.br/slackware/ 
+br, http://slackjeff.com.br/slackware/
 br, http://slackmirror.cbpf.br/pub/slackware/ 
 ca, http://mirror.csclub.uwaterloo.ca/slackware/ 
 ca, http://mirror.its.dal.ca/slackware/ 

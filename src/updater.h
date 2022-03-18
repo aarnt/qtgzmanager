@@ -103,7 +103,7 @@ const QString ctn_PING_COMMAND_SUCCESS = "2 packets transmitted, 2 received, 0% 
 const QString ctn_CURL_CONNECTION_ERROR = "Failed to connect to host";
 const QString ctn_CURL_COULDNT_RESOLVE_HOST = "Couldn't resolve host";
 
-const QString ctn_FTP_COMMAND_STRING = "curl --connect-timeout 20 --retry 2 --retry-delay 5 -# %1 -o %2";
+const QString ctn_FTP_COMMAND_STRING = "curl -L --connect-timeout 20 --retry 2 --retry-delay 5 -# %1 -o %2";
 
 enum Problem { ectn_NONE, ectn_NO_PING_BIN, ectn_NO_CURL_BIN, ectn_NO_GPG_BIN,
                ectn_NO_INTERNET, ectn_NO_NEW_PACKAGES, ectn_VERSION_NOT_SUPPORTED,
