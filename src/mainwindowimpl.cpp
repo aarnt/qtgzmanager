@@ -1301,70 +1301,70 @@ void MainWindowImpl::showPackagesInDirectory( bool preserveSelected ){
 		switch (res.getClassification()) { 
     case ectn_DUMP_FILE:
       s = new QStandardItem(
-            IconHelper::getIconBinary(), "D"); //"_DUMP");
+            IconHelper::getIconBinary(), "          D"); //"_DUMP");
       icons << s;
       s = new QStandardItem( str );
       items << s; break;
 
     case ectn_RPM:
 			s = new QStandardItem(
-          IconHelper::getIconRPM(), "R"); //"_RPM");
+          IconHelper::getIconRPM(), "          R"); //"_RPM");
 			icons << s;
 			s = new QStandardItem( str );	
 			items << s; break;
 
     case ectn_FROZEN :
 			s = new QStandardItem(
-          IconHelper::getIconFrozen(), "F"); //"_Frozen");
+          IconHelper::getIconFrozen(), "          F"); //"_Frozen");
 			icons << s;
 			s = new QStandardItem( str );	
 			items << s; break;
 
     case ectn_INTERNAL_ERROR :
 			s = new QStandardItem(
-          IconHelper::getIconInternalError(), "E"); //"_Error");
+          IconHelper::getIconInternalError(), "          E"); //"_Error");
 			icons << s;
 			s = new QStandardItem( str );	
 			items << s; break;
 
     case ectn_INFERIOR_VERSION :
 			s = new QStandardItem(
-          IconHelper::getIconInferior(), "IV"); //"_Inferior");
+          IconHelper::getIconInferior(), "          IV"); //"_Inferior");
 			icons << s;
 			s = new QStandardItem( str );    			
 			items << s; break;
 
     case ectn_SUPERIOR_VERSION:
 			s = new QStandardItem(
-          IconHelper::getIconSuperior(), "SV"); //_Superior");
+          IconHelper::getIconSuperior(), "          SV"); //_Superior");
 			icons << s;
 			s = new QStandardItem( str );    						
 			items << s; break;
 
     case ectn_OTHER_VERSION:
 			s = new QStandardItem(
-          IconHelper::getIconOtherVersion(), "OV"); //"_OtherVersion");
+          IconHelper::getIconOtherVersion(), "          OV"); //"_OtherVersion");
 			icons << s;
 			s = new QStandardItem( str );    						
 			items << s; break;
 
     case ectn_OTHER_ARCH:
       s = new QStandardItem(
-          IconHelper::getIconOtherArch(), "OA"); //"_OtherArch");
+          IconHelper::getIconOtherArch(), "          OA"); //"_OtherArch");
       icons << s;
       s = new QStandardItem( str );
       items << s; break;
 
     case ectn_INSTALLED :
 			s = new QStandardItem(
-          IconHelper::getIconInstalled(), "I"); //"_Installed");
+          IconHelper::getIconInstalled(), "          I"); //"_Installed");
 			icons << s;
 			s = new QStandardItem( str );    						
 			items << s; break;
 
     case ectn_NOT_INSTALLED :
 			s = new QStandardItem(
-          IconHelper::getIconNotInstalled(), "N"); //"_Not installed");
+          IconHelper::getIconNotInstalled(), "          N"); //"_Not installed");
 			icons << s;
 			s = new QStandardItem( str );    						
 
@@ -1374,7 +1374,7 @@ void MainWindowImpl::showPackagesInDirectory( bool preserveSelected ){
 
 		default: 
 			s = new QStandardItem(
-          IconHelper::getIconInternalError(), "E"); //"_Error");
+          IconHelper::getIconInternalError(), "          E"); //"_Error");
 			icons << s;
 			s = new QStandardItem( str );    						
 			items << s;	    	

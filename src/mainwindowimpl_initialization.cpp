@@ -441,6 +441,7 @@ void MainWindowImpl::initializePackageTreeView(){
   tvPackage->header()->setSectionsMovable(false);
   tvPackage->header()->setDefaultAlignment( Qt::AlignCenter );
   tvPackage->header()->setSectionResizeMode( QHeaderView::Fixed );
+  tvPackage->setTextElideMode(Qt::ElideNone);
   //tvPackage->setStyleSheet(StrConstants::getTreeViewCSS(SettingsManager::getPackagesInDirFontSize()));
 
   //Prepare it for drag operations
@@ -489,7 +490,7 @@ void MainWindowImpl::initializeInstalledPackagesTreeView(){
 
   if ( m_frozenPkgList->isEmpty() ){
     for( QString s: list ){
-      QStandardItem *i = new QStandardItem( IconHelper::getIconUnFrozen(), "N");
+      QStandardItem *i = new QStandardItem( IconHelper::getIconUnFrozen(), "          N");
       lIcons << i;
       //lIcons << new QStandardItem(IconHelper::getIconUnFrozen(), "_UnFrozen" );
 
@@ -500,14 +501,14 @@ void MainWindowImpl::initializeInstalledPackagesTreeView(){
     for( QString s: list ){
       if ( m_frozenPkgList->indexOf( QRegExp(QRegExp::escape(Package::getBaseName(s))), 0 ) == -1 )
       {
-        QStandardItem *i = new QStandardItem( IconHelper::getIconUnFrozen(), "N");
+        QStandardItem *i = new QStandardItem( IconHelper::getIconUnFrozen(), "          N");
         lIcons << i;
 
         //lIcons << new QStandardItem( IconHelper::getIconUnFrozen(), "_UnFrozen" );
       }
       else
       {
-        QStandardItem *i = new QStandardItem( IconHelper::getIconFrozen(), "F");
+        QStandardItem *i = new QStandardItem( IconHelper::getIconFrozen(), "          F");
         lIcons << i;
 
         //lIcons << new QStandardItem( IconHelper::getIconFrozen(), "_Frozen" );
@@ -550,6 +551,7 @@ void MainWindowImpl::initializeInstalledPackagesTreeView(){
   tvInstalledPackages->header()->setDefaultAlignment( Qt::AlignCenter );
   tvInstalledPackages->header()->setSectionResizeMode( QHeaderView::Fixed );
   tvInstalledPackages->setUniformRowHeights(true);
+  tvInstalledPackages->setTextElideMode(Qt::ElideNone);
 
   static bool onlyOnce=true;
   if (onlyOnce){
@@ -676,7 +678,7 @@ void MainWindowImpl::initializeToolBar(){
   QActionGroup *ag = new QActionGroup(this);
 
   toolBar->setWindowTitle(tr("Show toolbar"));
-  toolBar->setStyleSheet(StrConstants::getToolBarCSS());
+  //toolBar->setStyleSheet(StrConstants::getToolBarCSS());
   toolBar->setToolButtonStyle ( Qt::ToolButtonIconOnly );
   toolBar->addAction(actionHideRightView);
   toolBar->addAction(ag->addAction(actionNormalView));
