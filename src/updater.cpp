@@ -745,20 +745,27 @@ void Updater::parsePackagesTxt(){
   packageListFile.close();
 
   //Make the list show only the packages available for update (that weren't downloaded).
-  for(Patch p: m_patchesList){
-    Result status = Package::getStatus(p.getFileName());
+  QMutableListIterator<Patch> p(m_patchesList);
+  while(p.hasNext()){
+    Patch item = p.next();
+    Result status = Package::getStatus(item.getFileName());
 
-    if (status.getClassification() != ectn_SUPERIOR_VERSION &&
+    QFile patchFile(m_updaterDir + QDir::separator() + item.getFileName());
+    if (status.getClassification() == ectn_NOT_INSTALLED || patchFile.exists())
+      p.remove();
+
+    /*if (status.getClassification() != ectn_INFERIOR_VERSION &&
+        status.getClassification() != ectn_SUPERIOR_VERSION &&
         status.getClassification() != ectn_OTHER_VERSION &&
         status.getClassification() != ectn_OTHER_ARCH){
-      m_patchesList.removeOne(p);
+      p.remove();
     }
     else{
       //if this patch is still in the updaterDir, it can safely be removed from the list
-      QFile patchFile(m_updaterDir + QDir::separator() + p.getFileName());
+      QFile patchFile(m_updaterDir + QDir::separator() + p.next().getFileName());
       if (patchFile.exists())
-        m_patchesList.removeOne(p);
-    }
+        p.remove();
+    }*/
   }
 
   emit numberOfUpdatesChanged(m_patchesList.count());
