@@ -37,14 +37,14 @@ public:
   }
   
   static QString getApplicationVersion(){
-    return "1.1.0 (dev)";
+    return "1.1.0";
   }
 
   static QString getApplicationCliHelp(){
     QString str =
         "\n" + QObject::tr("QTGZManager help usage:") + "\n\n" +
         "-version: " + QObject::tr("show application version.") + "\n" +
-        "-style <Qt4-style>: " + QObject::tr("use a different Qt4 style (ex: -style gtk).") + "\n" +
+        //"-style <Qt4-style>: " + QObject::tr("use a different Qt4 style (ex: -style gtk).") + "\n" +
         "-no-patch-download: " + QObject::tr("disable patch download from Slackware mirror.") +"\n";
     return str;
   }

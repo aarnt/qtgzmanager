@@ -97,7 +97,7 @@ QMap<QString, QStringList> PackageController::findFile( const QString& name, con
 
   if (sim->rowCount() == 0) return m;
 
-  foundItems = sim->findItems(name, Qt::MatchRegExp|Qt::MatchRecursive, 0);
+  foundItems = sim->findItems(name, Qt::MatchRegularExpression|Qt::MatchRecursive, 0);
   QString fullPath;
 
   for(QStandardItem *item: foundItems){
@@ -225,7 +225,7 @@ QList<QModelIndex> * PackageController::findFileEx( const QString& name, const Q
     return res;
   }
 
-  foundItems = sim->findItems(Package::parseSearchString(name), Qt::MatchRegExp|Qt::MatchRecursive);
+  foundItems = sim->findItems(Package::parseSearchString(name), Qt::MatchRegularExpression|Qt::MatchRecursive);
   for(QStandardItem *item: foundItems)
   {
     //if (item->accessibleDescription().contains("directory")) continue;

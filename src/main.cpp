@@ -36,11 +36,6 @@
 int main(int argc, char * argv[])
 {
   ArgumentList *argList = new ArgumentList(argc, argv);
-
-  /*QApplication::setGraphicsSystem(QLatin1String("raster"));
-  if (!argList->getSwitch("-style"))
-      QApplication::setStyle(new QCleanlooksStyle());*/
-
   QtSingleApplication app( StrConstants::getApplicationName(), argc, argv );
 
   //This sends a message just to awake the socket-based QtSinleApplication engine
@@ -59,14 +54,10 @@ int main(int argc, char * argv[])
     return(0);
   }
   else if (argList->getSwitch("-version")){
-    std::cout << "\n" << StrConstants::getApplicationName().toLatin1().data() << "\n" << std::endl;
+    std::cout << StrConstants::getApplicationName().toLatin1().data() << " " <<
+                 StrConstants::getApplicationVersion().toLatin1().data() << "\n" << std::endl;
     return(0);
   }
-
-  /*if ( WMHelper::getSUCommand() == ctn_NO_SU_COMMAND ){
-    QMessageBox::critical( 0, "QTGZManager", StrConstants::getErrorNoSuCommand());
-    return ( -2 );
-  }*/
 
 	MainWindowImpl win;
 
