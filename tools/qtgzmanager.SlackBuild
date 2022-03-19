@@ -67,8 +67,8 @@ qmake-qt5 \
   QMAKE_CXXFLAGS="$SLKCFLAGS"
 make
 
-mkdir -p $PKG/usr/lib/qtgzmanager
-cp -a sudo/qtgzmanager-sudo $PKG/usr/lib/qtgzmanager
+mkdir -p $PKG/usr/lib$LIBDIRSUFFIX/qtgzmanager
+cp -a sudo/qtgzmanager-sudo $PKG/usr/lib$LIBDIRSUFFIX/qtgzmanager
 
 mkdir -p $PKG/usr/bin
 cp -a bin/qtgzmanager $PKG/usr/bin
