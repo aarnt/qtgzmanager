@@ -175,13 +175,13 @@ void MainWindowImpl::show(){
     if (!m_interfaceInitialized){
       QMainWindow::show();
       loadSettings();
+
+      QModelIndex index = m_modelDir->index(m_initialDir);
+      tvDir->scrollTo(index, QAbstractItemView::PositionAtCenter);
+      tvDir->setCurrentIndex(index);
     }
     else QMainWindow::show();
   }
-
-  QModelIndex index = m_modelDir->index(m_initialDir);
-  tvDir->scrollTo(index, QAbstractItemView::PositionAtCenter);
-  tvDir->setCurrentIndex(index);
 }
 
 void MainWindowImpl::changeDir(){
