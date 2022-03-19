@@ -757,17 +757,6 @@ void MainWindowImpl::insertReinstallPackageAction(){
 }
 
 void MainWindowImpl::freezePackage(){
-  /*for(QModelIndex item: tvInstalledPackages->selectionModel()->selectedIndexes())
-  {
-    if ( item.column() == ctn_PACKAGE_NAME )
-    {
-      QModelIndex mi = m_proxyModelInstalledPackages->mapToSource( item );
-      QStandardItem *si = m_modelInstalledPackages->item(mi.row(), mi.column());
-      si->setText(si->text() + "_MUDEI!");
-      qDebug() << "Selected package: " << si->text();
-    }
-  }*/
-
   int bkSize = m_frozenPkgList->count();
   for(QModelIndex item: tvInstalledPackages->selectionModel()->selectedIndexes())
   {
@@ -776,15 +765,14 @@ void MainWindowImpl::freezePackage(){
       QModelIndex mi = m_proxyModelInstalledPackages->mapToSource( item );
       QStandardItem *si = m_modelInstalledPackages->item(mi.row(), mi.column());
       si->setIcon(IconHelper::getIconFrozen());
-      si->setText( "F" );
+      si->setText( "          F" );
     }
     else if ( item.column() == ctn_PACKAGE_NAME )
     {
-      qDebug() << "CHEGUEI!";
       QModelIndex mi2 = m_proxyModelInstalledPackages->mapToSource( item );
       QStandardItem *si2 = m_modelInstalledPackages->item(mi2.row(), mi2.column());
       QString pkg = si2->text();
-      qDebug() << "Selected package: " << si2->text();
+      //qDebug() << "Selected package: " << si2->text();
       pkg = Package::getBaseName(pkg);
 
       *m_frozenPkgList << pkg;
@@ -807,11 +795,11 @@ void MainWindowImpl::unfreezePackage(){
       QModelIndex mi = m_proxyModelInstalledPackages->mapToSource( item );
       QStandardItem *si = m_modelInstalledPackages->item(mi.row(), mi.column());
       si->setIcon(IconHelper::getIconUnFrozen());
-      si->setText("N");
+      si->setText("          N");
     }
     else if ( item.column() == ctn_PACKAGE_NAME ){
-      //qDebug() << "CHEGUEI!";
       QModelIndex mi2 = m_proxyModelInstalledPackages->mapToSource( item );
+
       QStandardItem *si2 = m_modelInstalledPackages->item(mi2.row(), mi2.column());
       QString pkg = si2->text();
       pkg = Package::getBaseName(pkg);

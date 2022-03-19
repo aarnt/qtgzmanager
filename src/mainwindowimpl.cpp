@@ -498,7 +498,7 @@ void MainWindowImpl::execContextMenuInstalledPackages(QPoint point){
 		}
 	}
 
-  if (allSameType == true){
+  if (allSameType == true && m_InstalledPackageListOrderedCol == 1){
     if (lastType.pixmap(QSize(22,22)).toImage() == IconHelper::getIconFrozen().pixmap(QSize(22,22)).toImage())
       menu.addAction(actionUnfreezePkg);
     else

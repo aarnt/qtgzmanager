@@ -535,19 +535,19 @@ void MainWindowImpl::initializeInstalledPackagesTreeView(){
   tvInstalledPackages->setEditTriggers(QAbstractItemView::NoEditTriggers);
   tvInstalledPackages->setSelectionMode(QAbstractItemView::ExtendedSelection);
   tvInstalledPackages->setSortingEnabled( true );
-  //tvInstalledPackages->sortByColumn( 1, Qt::AscendingOrder);
+  //tvInstalledPackages->sortByColumn( 1, Qt::AscendingOrder); //
   tvInstalledPackages->setIndentation( 0 );
   tvInstalledPackages->setAllColumnsShowFocus( true );
   tvInstalledPackages->header()->setSortIndicatorShown(true);
-  tvInstalledPackages->header()->setSectionsClickable(false);
+  tvInstalledPackages->header()->setSectionsClickable(true); //
   tvInstalledPackages->header()->setSectionsMovable(false);
   tvInstalledPackages->setColumnWidth(0, 24);
   tvInstalledPackages->setColumnWidth(1, 50);
-  //tvInstalledPackages->header()->setSortIndicator(
-  //      m_InstalledPackageListOrderedCol, m_InstalledPackageListSortOrder );
-  //tvInstalledPackages->sortByColumn( m_InstalledPackageListOrderedCol, m_InstalledPackageListSortOrder );
-  tvInstalledPackages->header()->setSortIndicator(1, Qt::AscendingOrder); //m_InstalledPackageListSortOrder );
-  tvInstalledPackages->sortByColumn( 1, Qt::AscendingOrder); //m_InstalledPackageListSortOrder );
+  tvInstalledPackages->header()->setSortIndicator( //
+        m_InstalledPackageListOrderedCol, m_InstalledPackageListSortOrder ); //
+  tvInstalledPackages->sortByColumn( m_InstalledPackageListOrderedCol, m_InstalledPackageListSortOrder ); //
+  tvInstalledPackages->header()->setSortIndicator(1, m_InstalledPackageListSortOrder );
+  //tvInstalledPackages->sortByColumn( 1, m_InstalledPackageListSortOrder );
   tvInstalledPackages->header()->setDefaultAlignment( Qt::AlignCenter );
   tvInstalledPackages->header()->setSectionResizeMode( QHeaderView::Fixed );
   tvInstalledPackages->setUniformRowHeights(true);
