@@ -1731,6 +1731,26 @@ bool MainWindowImpl::showPackageContent(){
   return res;
 }
 
+/*
+ * This SLOT is called whenever user clicks a url inside Updater's textBrowser
+ */
+void MainWindowImpl::outputTextBrowserAnchorClicked(const QUrl &link)
+{
+  if (link.toString().contains(QLatin1String("goto:")))
+  {
+    QString tmp = link.toString().mid(5);
+    if (tmp == QLatin1String("patches_dir"))
+    {
+      gotoDirectory(SettingsManager::instance()->getUpdaterDirectory());
+    }
+  }
+  //Otherwise, it's a remote URL which needs to be opened outside Octopi
+  else
+  {
+    QDesktopServices::openUrl(link);
+  }
+}
+
 void MainWindowImpl::reapplyPackageFilter(){
   bool isFilterPackageSelected = leFilterPackage->hasFocus();
   QString search = Package::parseSearchString(leFilterPackage->text());

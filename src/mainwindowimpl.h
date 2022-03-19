@@ -410,6 +410,7 @@ class MainWindowImpl : public QMainWindow, public Ui::MainWindow
     void toggleToolBarStatus();    
     void directoryRenamed(QString path, QString oldName, QString newName);
     void gotoDirectory(QString directoryToGo);
+    void outputTextBrowserAnchorClicked(const QUrl &link);
 };
 
 #endif

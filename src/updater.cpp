@@ -751,7 +751,9 @@ void Updater::parsePackagesTxt(){
     Result status = Package::getStatus(item.getFileName());
 
     QFile patchFile(m_updaterDir + QDir::separator() + item.getFileName());
-    if (status.getClassification() == ectn_NOT_INSTALLED || patchFile.exists())
+    if (status.getClassification() == ectn_NOT_INSTALLED ||
+        status.getClassification() == ectn_INSTALLED ||
+        patchFile.exists())
       p.remove();
 
     /*if (status.getClassification() != ectn_INFERIOR_VERSION &&

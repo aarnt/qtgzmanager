@@ -197,8 +197,10 @@ void MainWindowImpl::createTabUpdater(){
   updaterOutput->setReadOnly(true);
   updaterOutput->setFrameShape(QFrame::NoFrame);
   updaterOutput->setFrameShadow(QFrame::Plain);
-  updaterOutput->setOpenExternalLinks(true);
+  updaterOutput->setOpenLinks(false);
   gridLayoutX->addWidget ( updaterOutput, 0, 0, 1, 1 );
+
+  connect(updaterOutput, SIGNAL(anchorClicked(QUrl)), this, SLOT(outputTextBrowserAnchorClicked(QUrl)));
 
   QString aux(StrConstants::getUpdaterTabTitle());
 
@@ -263,12 +265,15 @@ void MainWindowImpl::threadUpdaterStarted(){
 void MainWindowImpl::threadUpdaterFinished(){
   conditionalGotoNormalView();
 
+  //html += QLatin1String("<tr><td><a href=\"goto:") + pkg + QLatin1String("\">") + pkg +
+  QString updaterDir = "<a href=\"goto:patches_dir\"\\>" + Updater::getUpdaterDirectory();
+
   if (m_updaterThread->getNumberOfUpdates() == 1 &&
            m_updaterThread->getNumberOfDownloadedUpdates() == 1)
-    insertUpdaterText("<br>" + tr("There is a new patch in directory \"%1\"").arg(Updater::getUpdaterDirectory()));
+    insertUpdaterText("<br>" + tr("There is a new patch in directory %1").arg(updaterDir));
   else if (m_updaterThread->getNumberOfUpdates() > 1 &&
            m_updaterThread->getNumberOfDownloadedUpdates() == m_updaterThread->getNumberOfUpdates())
-    insertUpdaterText("<br>" + tr("There are new patches in directory \"%1\"").arg(Updater::getUpdaterDirectory()));
+    insertUpdaterText("<br>" + tr("There are new patches in directory %1").arg(updaterDir));
 
   delete m_updaterThread;
   m_updaterThread = 0;
