@@ -42,7 +42,7 @@ Qt::DropActions QDnDDirModel::supportedDropActions() const {
   return (Qt::CopyAction) | (Qt::MoveAction);  
 }
 
-Qt::ItemFlags QDnDDirModel::flags(QModelIndex index) const {
+Qt::ItemFlags QDnDDirModel::flags(const QModelIndex index) const {
   Qt::ItemFlags defaultFlags = flags(index); 
 	
 	if (index.isValid())

@@ -29,6 +29,8 @@
 #include <QIcon>
 #include <QFileIconProvider>
 
+#include "uihelper.h"
+
 class QDnDDirModel : public QFileSystemModel{
   Q_OBJECT
 
@@ -36,12 +38,10 @@ class QDnDDirModel : public QFileSystemModel{
   	QDnDDirModel(QObject *parent);
     QStringList mimeTypes() const;
     Qt::DropActions supportedDropActions() const;
-    Qt::ItemFlags flags(QModelIndex index) const;
+    Qt::ItemFlags flags(const QModelIndex index) const;
     bool dropMimeData(const QMimeData *data, 
-    Qt::DropAction action, int row, int column, const QModelIndex &parent);
-  
+      Qt::DropAction action, int row, int column, const QModelIndex &parent);
 };
-
 
 class QDnDDirModelIconProvider : public QFileIconProvider{
   private:
@@ -54,9 +54,11 @@ class QDnDDirModelIconProvider : public QFileIconProvider{
       if (info.absolutePath() == fi.absolutePath() &&
           info.fileName() == fi.fileName() &&
           info.filePath() == fi.filePath())
-        return QIcon(":/resources/images/favorites.png");
+      {
+        return IconHelper::getIconFavorites();
+      }
       else if (info.isDir()){
-        return QIcon(":/resources/images/folder.png");
+        return IconHelper::getIconFolder();
       }
       else return QFileIconProvider::icon(info);
     }

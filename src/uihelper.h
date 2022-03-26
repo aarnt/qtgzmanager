@@ -34,6 +34,7 @@ class IconHelper{
 public:
   static QIcon getIconInternalError(){ return QIcon(":/resources/images/internalerror.png"); }
   static QIcon getIconFolder(){ return QIcon(":/resources/images/folder.png"); }
+  static QIcon getIconFavorites() { return QIcon(":/resources/images/favorites.png"); }
   static QIcon getIconBinary(){ return QIcon(":/resources/images/binary.png"); }
   static QIcon getIconFrozen(){ return QIcon(":/resources/images/tgz_frozen_flat.png"); }
   static QIcon getIconUnFrozen(){ return QIcon(":/resources/images/tgz4_flat.png"); }
@@ -45,7 +46,6 @@ public:
   static QIcon getIconInstalled(){ return QIcon(":/resources/images/installed.png"); }
   static QIcon getIconNotInstalled(){ return QIcon(":/resources/images/notinstalled.png"); }
   static QIcon getIconRemove(){ return QIcon(":/resources/images/close.png"); }
-
   static QIcon getIconExit(){ return QIcon(":/resources/images/exit.png"); }
   static QIcon getIconClose(){ return QIcon(":/resources/images/window-close.png"); }
 };
