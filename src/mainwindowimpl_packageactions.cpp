@@ -468,7 +468,7 @@ QString MainWindowImpl::_removeStringBugs(const QString str){
   QString newStr(str);
 
   //Removing the annoying kdesu 4.x "error" messages
-  newStr.remove(QRegularExpression("^qt.qpa.xcb.*$"));
+  newStr.remove(QRegularExpression("^qt\\.qpa\\.xcb.*$"));
   newStr.remove(QRegularExpression("^kdesu\\(.*$"));
   newStr.remove(QRegularExpression("^kbuildsycoca.*$"));
   newStr.remove(QRegularExpression("^Connecting to deprecated signal.*$"));
