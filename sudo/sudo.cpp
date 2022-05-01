@@ -111,11 +111,11 @@ assert_helper h;
 
 inline std::string env_workarounds()
 {
-  std::cerr << "octopi-sudo" << ": Stripping child environment except for: ";
+  //std::cerr << "qtgzmanager-sudo" << ": Stripping child environment except for: ";
   std::ostringstream left_env_params;
   std::copy(ALLOWED_VARS, ALLOWED_END - 1, std::ostream_iterator<const char *>{left_env_params, ","});
   left_env_params << *(ALLOWED_END - 1); // printing the last separately to avoid trailing comma
-  std::cerr << left_env_params.str() << '\n';
+  //std::cerr << left_env_params.str() << '\n';
   // cleanup environment, because e.g.:
   // - pcmanfm-qt will not start if the DBUS_SESSION_BUS_ADDRESS is preserved
   // - Qt apps may change user's config files permissions if the XDG_* are preserved
