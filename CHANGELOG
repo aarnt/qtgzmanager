@@ -1,4 +1,4 @@
-1.1.0 (dev)
+1.1.0 (01/05/2022)
   Ported code to Qt5 libs.
   Added an About dialog.
   Added support to Slackware 15.0 release.
