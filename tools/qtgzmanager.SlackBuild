@@ -51,24 +51,11 @@ find . \
  \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
  -exec chmod 644 {} \;
 
-cd sudo
-
 qmake-qt5 \
   QMAKE_LIBS="$SLKCFLAGS" \
   QMAKE_CFLAGS="$SLKCFLAGS" \
   QMAKE_CXXFLAGS="$SLKCFLAGS"
 make
-
-cd ..
-
-qmake-qt5 \
-  QMAKE_LIBS="$SLKCFLAGS" \
-  QMAKE_CFLAGS="$SLKCFLAGS" \
-  QMAKE_CXXFLAGS="$SLKCFLAGS"
-make
-
-mkdir -p $PKG/usr/lib$LIBDIRSUFFIX/qtgzmanager
-cp -a sudo/qtgzmanager-sudo $PKG/usr/lib$LIBDIRSUFFIX/qtgzmanager
 
 mkdir -p $PKG/usr/bin
 cp -a bin/qtgzmanager $PKG/usr/bin
