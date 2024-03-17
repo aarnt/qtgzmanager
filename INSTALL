@@ -8,13 +8,14 @@ There are two ways to install QTGZManager:
 
 I - Manually compiling the sources:
 
-	$ git clone https://github.com/aarnt/qtgzmanager
-	$ cd qtgzmanager
-	$ cd sudo
-        $ qmake-qt5 qtgzmanager-sudo.pro
+	$ git clone https://github.com/aarnt/qt-sudo
+	$ cd qt-sudo
+	$ qmake-qt5 qt-sudo.pro
 	$ make
 	# make install
 	$ cd ..
+        $ git clone https://github.com/aarnt/qtgzmanager
+	$ cd qtgzmanager
 	$ qmake-qt5 qtgzmanager.pro
 	$ make
 	# make install

@@ -37,15 +37,15 @@ public:
   }
   
   static QString getApplicationVersion(){
-    return "1.1.0";
+    return "1.1.1";
   }
 
   static QString getApplicationCliHelp(){
     QString str =
         "\n" + QObject::tr("QTGZManager help usage:") + "\n\n" +
         "-version: " + QObject::tr("show application version.") + "\n" +
-        //"-style <Qt4-style>: " + QObject::tr("use a different Qt4 style (ex: -style gtk).") + "\n" +
         "-no-patch-download: " + QObject::tr("disable patch download from Slackware mirror.") +"\n";
+
     return str;
   }
 
@@ -226,8 +226,6 @@ public:
 
   static QString getToolBarCSS(){
     return QString("QToolBar { border-bottom: 1px; border-top: 1px; } ");
-    //               "QToolTip {}"
-    //               );
   }
 
   static QString getFilterPackageNotFoundCSS(){

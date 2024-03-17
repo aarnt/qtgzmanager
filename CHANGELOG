@@ -1,3 +1,6 @@
+1.1.1 (dev)
+  Now using the unified qt-sudo project (https://github.com/aarnt/qt-sudo) for privilege escalation.
+
 1.1.0 (01/05/2022)
   Ported code to Qt5 libs.
   Added an About dialog.

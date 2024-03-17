@@ -28,7 +28,7 @@
 
 enum EditOptions { ectn_EDIT_AS_ROOT, ectn_EDIT_AS_NORMAL_USER };
 
-const QString ctn_OCTOPISUDO(QStringLiteral("/usr/lib/qtgzmanager/qtgzmanager-sudo"));
+const QString ctn_OCTOPISUDO(QStringLiteral("/usr/local/bin/qt-sudo"));
 const QString ctn_OCTOPISUDO_PARAMS(QStringLiteral("-d"));
 const QString ctn_NO_SU_COMMAND("none");
 
