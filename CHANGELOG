@@ -1,4 +1,5 @@
 1.1.1 (dev)
+  BugFix: Do not download a patch that has an outdated version compared to the installed one.
   Now using the unified qt-sudo project (https://github.com/aarnt/qt-sudo) for privilege escalation.
 
 1.1.0 (01/05/2022)

@@ -753,21 +753,9 @@ void Updater::parsePackagesTxt(){
     QFile patchFile(m_updaterDir + QDir::separator() + item.getFileName());
     if (status.getClassification() == ectn_NOT_INSTALLED ||
         status.getClassification() == ectn_INSTALLED ||
+        status.getClassification() == ectn_INFERIOR_VERSION ||
         patchFile.exists())
       p.remove();
-
-    /*if (status.getClassification() != ectn_INFERIOR_VERSION &&
-        status.getClassification() != ectn_SUPERIOR_VERSION &&
-        status.getClassification() != ectn_OTHER_VERSION &&
-        status.getClassification() != ectn_OTHER_ARCH){
-      p.remove();
-    }
-    else{
-      //if this patch is still in the updaterDir, it can safely be removed from the list
-      QFile patchFile(m_updaterDir + QDir::separator() + p.next().getFileName());
-      if (patchFile.exists())
-        p.remove();
-    }*/
   }
 
   emit numberOfUpdatesChanged(m_patchesList.count());
